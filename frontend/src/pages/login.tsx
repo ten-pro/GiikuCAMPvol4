@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '@/styles/login.module.css';
 
 interface LoginFormState {
   email: string;
@@ -6,7 +7,7 @@ interface LoginFormState {
   errorMessage: string | null;
 }
 
-const LoginScreen: React.FC = () => {
+const login: React.FC = () => {
   const [formState, setFormState] = useState<LoginFormState>({
     email: '',
     password: '',
@@ -37,11 +38,10 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <div className='{styles.container}'>
-      <h1>Login Screen</h1>
+    <div>
+      <img src="/login/title.svg" alt="login" className={styles.loginImage} /> 
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -51,7 +51,6 @@ const LoginScreen: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
@@ -63,10 +62,10 @@ const LoginScreen: React.FC = () => {
         {formState.errorMessage && (
           <div style={{ color: 'red' }}>{formState.errorMessage}</div>
         )}
-        <button type="submit">ログイン</button>
+        <button type="submit"  className={styles.loginButton}>ログイン</button>
       </form>
     </div>
   );
 };
 
-export default LoginScreen;
+export default login

@@ -1,7 +1,13 @@
-.container {
-    background-image: url('');
-    background-size: cover;
-    background-position: center;
-    /* その他のスタイルを追加 */
-  }
+.loginImage {
+  width: 200px; /* 画像の幅を調整 */
+  height: auto; /* アスペクト比を維持 */
+  /* その他のスタイルを追加 */
+}
+.loginButton {
+  background-color: black;
+  color: white;
+  border: none;
+  outline: 1px solid white;
+}
+
   
