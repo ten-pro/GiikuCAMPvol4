@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  frontend:
+    image: node:16
+    volumes:
+      - ./frontend:/frontend
+    working_dir: /frontend
+    ports:
+      - '3000:3000'
+    command: sh -c "yarn install && yarn dev"
+
+  php:
+    build: ./backend
+    volumes:
+      - ./backend:/var/www/html
+    expose:
+    - 9000
+    
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: your_password
+      MYSQL_DATABASE: your_database
+      MYSQL_USER: your_user
+      MYSQL_PASSWORD: your_password
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./backend/nginx/conf.d:/etc/nginx/conf.d
+      - ./backend:/var/www/html
+    ports:
+      - '8000:80'
+    depends_on:
+      - php
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: your_user
+      PMA_PASSWORD: your_password
+    ports:
+      - '8080:80'
+    depends_on:
+      - mysql
+
+
+volumes:
+  mysql-data:
