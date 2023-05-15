@@ -38,32 +38,42 @@ const login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <img src="/login/title.svg" alt="login" className={styles.loginImage} /> 
-      <form onSubmit={handleFormSubmit}>
-        <div>
+      <div className={styles.wrapper}>
+      <form onSubmit={handleFormSubmit} className={styles.form}>
+        <div className={styles.inputWrapper}>
           <input
             type="email"
             id="email"
             name="email"
             value={formState.email}
             onChange={handleInputChange}
+            placeholder="メールアドレス"
+            className={`${styles.inputField} ${styles.centerPlaceholder} ${styles.inputFieldWithIconMail}`}
           />
         </div>
-        <div>
+        <div className={styles.inputWrapper}>
           <input
             type="password"
             id="password"
             name="password"
             value={formState.password}
             onChange={handleInputChange}
+            placeholder="パスワード"
+            className={`${styles.inputField} ${styles.centerPlaceholder} ${styles.inputFieldWithIconKey}`}
           />
         </div>
         {formState.errorMessage && (
           <div style={{ color: 'red' }}>{formState.errorMessage}</div>
         )}
         <button type="submit"  className={styles.loginButton}>ログイン</button>
+        <div className={styles.registerLink}>
+        <span className={styles.registerText}>新規登録</span>
+        <hr className={styles.registerLine} />
+        </div>
       </form>
+    </div>
     </div>
   );
 };
