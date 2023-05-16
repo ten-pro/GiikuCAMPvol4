@@ -69,8 +69,7 @@ const login: React.FC = () => {
         )}
         <button type="submit"  className={styles.loginButton}>ログイン</button>
         <div className={styles.registerLink}>
-        <span className={styles.registerText}>新規登録</span>
-        <hr className={styles.registerLine} />
+        <a href="/login" className={styles.registerText}>新規登録</a>
         </div>
       </form>
     </div>
