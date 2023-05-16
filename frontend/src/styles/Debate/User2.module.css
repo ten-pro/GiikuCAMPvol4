@@ -1,0 +1,30 @@
+
+.image2{
+  margin: 0;
+  grid-column:3; /* 列の範囲を指定 */
+  grid-row: 2; /* 行を指定 */
+  width: 11vw;
+  height: 9vw;
+  margin-top: 5%;
+  margin-left: 2vw;
+}
+.user2{
+  margin: 0;
+  grid-column:3; /* 列の範囲を指定 */
+  grid-row: 2; /* 行を指定 */
+  color: #CC00FF;
+  height: 15%;
+  font-size: 2vw;
+  text-align: center;
+  margin-top: 80%;
+}
+.seikaku2{
+  margin: 0;
+  grid-column:3; /* 列の範囲を指定 */
+  grid-row: 2; /* 行を指定 */
+  color: #CC00FF;
+  height: 10%;
+  font-size: 1.8vw;
+  text-align: center;
+  margin-top: 100%;
+}
