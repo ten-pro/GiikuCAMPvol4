@@ -1,6 +1,7 @@
 import style from "../../styles/Debate/User3.module.css"
 
 const User3= () =>{
+  
   return(
     <>
     <img src="../../../public/image/gpt.png" alt="" className={style.image3}/>

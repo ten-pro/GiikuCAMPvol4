@@ -17,14 +17,14 @@
 .rog2_area:before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-top: -11vw;
-  border: 25px solid transparent;
-  border-left: 30px solid #CC00FF;
+  top: 10%;
+  left: 100.5%;
+  border:3vw solid transparent;
+  border-left: 2.8vw solid #CC00FF;
 }
 
 .rog2 {
   margin: 0;
-  padding: 1vw;
+  padding: 2vw;
+  max-width: 100%;
 }

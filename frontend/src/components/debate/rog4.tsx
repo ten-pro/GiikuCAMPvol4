@@ -8,7 +8,7 @@ const Rog4 = () =>{
   return(
     <>
     <div className={style.rog4_area} style={{display:hyouzi4?'none':'block'}}>
-      <p className={style.rog4}>学費の無償化なしだよne！！！！！！！！！！！！！！！</p>
+      <p className={style.rog4}>学費の無償化なしだよだよだよだよだよだよだよだよだよだよだよだよだよだよだよだよ</p>
     </div>
     </>
   )
