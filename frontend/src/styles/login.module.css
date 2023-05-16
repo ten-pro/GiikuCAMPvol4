@@ -14,6 +14,10 @@
   height: 60px;
   margin-top: 1.5rem;
 }
+.loginButton:hover {
+  background-color: gray; /* ホバー時の背景色を変更 */
+  cursor: pointer; /* ホバー時のカーソルをポインターに変更 */
+}
 .inputField {
   background-color: black;
   border: none;
@@ -22,6 +26,11 @@
   width: 400px;
   height: 50px;
   margin-bottom: 1.5rem; 
+  caret-color: white; /* カーソルの色を白に設定 */
+  color: white; /* 入力される文字の色を白に設定 */
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
 }
 .inputField::placeholder {
   color: rgba(255, 255, 255, 0.6); /* 薄い白色 */
@@ -30,20 +39,29 @@
 .inputFieldWithIconMail{
   background-image: url("/login/icon-mail.svg");
   background-repeat: no-repeat;
-  background-position: 0.5cm center;
   background-size: 20px;
+  background-origin: content-box;
+  background-position: 5px center;
+  padding-right: 30px;
 }
 .inputFieldWithIconKey{
   background-image: url("/login/icon-key.svg");
   background-repeat: no-repeat;
-  background-position: 0.5cm center;
   background-size: 20px;
+  background-origin: content-box;
+  background-position: 5px center;
+  padding-right: 30px;
 }
 .registerText {
   display: flex;
   align-items: center;
   color:white;
 }
+.registerText:hover {
+  cursor: pointer; /* ホバー時のカーソルをポインターに変更 */
+  background-color: gray; /* ホバー時の背景色を変更 */
+}
+
 .registerText::after {
   content: '';
   flex-grow: 1;
@@ -93,7 +111,8 @@
   border: none;
   outline: 2px solid white;
   border-radius: 30px;
-  width: 50%;
+  width: 90%;
+  max-width: 500px;
 }
 
   

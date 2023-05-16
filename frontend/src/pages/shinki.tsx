@@ -25,9 +25,12 @@ const shinki: React.FC<RegistrationFormProps> = ({ onRegister }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === confirmPassword) {
+      // 登録の処理を行う関数
       onRegister(email, password);
+        // ログイン画面に遷移する
+        
     } else {
-      alert('Passwords do not match.');
+      alert('メールアドレスかパスワードが一致しません');
     }
   };
 
