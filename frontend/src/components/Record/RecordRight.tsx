@@ -9,6 +9,9 @@ function RecordRight() {
 return (
 <>
     <div className={Styles.right}>
+        <div className={Styles.pageTitle}>
+            <div className={Styles.pTitle}>議事録</div>
+        </div>
         <div className={Styles.bookArea}>
             <div className={Styles.bookLine}>
                 <div className={Styles.bookTop}>
