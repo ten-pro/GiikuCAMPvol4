@@ -61,14 +61,6 @@
     cursor: pointer; /* ホバー時のカーソルをポインターに変更 */
     background-color: gray; /* ホバー時の背景色を変更 */
   }
-  
-  .registerText::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background-color: white;
-    margin-left: 10px;
-  }
   .registerLine {
     width: 100%;
     border: none;
