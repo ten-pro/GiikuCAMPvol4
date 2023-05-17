@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from '@/styles/login.module.css';
 
-const Login: React.FC = () => {
+const login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -16,11 +17,21 @@ const Login: React.FC = () => {
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (!email && !password) {
+      setErrorMessage('＊メールアドレスとパスワードが入力されていません');
+    } else if (!email) {
+      setErrorMessage('＊メールアドレスが入力されていません');
+    } else if (!password) {
+      setErrorMessage('＊パスワードが入力されていません');
+    } else {
+      setErrorMessage('');
+
     // フォームの送信処理
 
     // フォームの入力値を初期化
     setEmail('');
     setPassword('');
+    }
   };
 
   return (
@@ -38,6 +49,7 @@ const Login: React.FC = () => {
                 onChange={handleEmailChange}
                 placeholder="メールアドレス"
                 className={`${styles.inputField} ${styles.inputFieldWithIconMail}`}
+                maxLength={50}
               />
             </div>
           </div>
@@ -51,9 +63,11 @@ const Login: React.FC = () => {
                 onChange={handlePasswordChange}
                 placeholder="パスワード"
                 className={`${styles.inputField} ${styles.inputFieldWithIconKey}`}
+                maxLength={50}
               />
             </div>
           </div>
+          {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
           <button type="submit" className={styles.loginButton}>
             ログイン
           </button>
@@ -68,4 +82,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default login;

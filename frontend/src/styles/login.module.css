@@ -107,4 +107,8 @@
   max-width: 500px;
 }
 
+.errorMessage {
+  color: red;
+  margin-bottom: 10px;
+}
   
