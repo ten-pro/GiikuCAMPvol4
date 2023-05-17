@@ -196,16 +196,18 @@
 }
 .button {
     margin-left: 2vw;
-    width: 12vw;
+    width: 15vw;
     margin-top: 5vh;
-    
+    text-align: center;
     margin-bottom: 5vh;
     .buttonDesign {
         background-color: transparent;
-        font-size: 40px;
+        font-size: 30px;
         text-align: center;
+        margin: 0 auto;
+        justify-content: center;
         width: 100%;
-        padding: 3% 15% 3% 15%;
+        padding: 3% 10% 3% 10%;
         white-space: nowrap;
         color: #ffffff;
         box-shadow: 

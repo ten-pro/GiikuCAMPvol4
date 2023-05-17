@@ -21,7 +21,7 @@ return (
             <HomeGpt color="#FFD56A" src="/HomeImage/gptLogo4.png" placeholder='Davinci' position='4' loading='44' positive='444' negative='d' one='dd' all='ddd'/>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-            <HomeButton text="議事録"/>
+            <HomeButton text="議事録を開く"/>
             <HomeButton text="スタート"/>
         </div>
     </div>
