@@ -1,0 +1,8 @@
+.title{
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 1; /* 行を指定 */
+  color: white;
+  font-size: 3vw;
+  margin: auto;
+  margin-top: 1.5vw;
+}
