@@ -1,0 +1,79 @@
+.left {
+    border: 2px solid #ffffff;
+    .homeButton {
+        background-color: transparent;
+        color: #ffffff;
+        border: none;
+    }
+    .homeButton:focus {
+        text-shadow: 
+        0 0 1px #ffffff,
+        0 0 1px #ffffff,
+        0 0 1px #ffffff,
+        0 0 1px #ffffff;
+    }
+    .leftBottom {
+        box-shadow: 
+        0 0 10px #0000ff,
+        0 0 10px #0000ff,
+        0 0 10px #0000ff,
+        0 0 10px #0000ff;
+        .title {
+            background-color: rgb(255, 255, 255, 0.5);
+            border-radius: 10px;
+            display: flex;
+            .titleText {
+                color: #ffffff;
+            }
+            .titleVar {
+                color: #ffffff;
+            }
+        }
+        .bottomContents {
+            background-color: rgb(255, 255, 255, 0.5);
+            border-radius: 10px;
+            .nameCon {
+                display: flex;
+                .nameTitle {
+                    color: #ffffff;
+                }
+                .nameVar {
+                    color: #ffffff;
+                }
+            }
+            .positionCon {
+                display: flex;
+                .positionTitle {
+                    color: #ffffff;
+                }
+                .positionVar {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+.right {
+    .bookArea {
+        .bookLine {
+            .bookTop {
+                display: flex;
+                .book {
+                    box-shadow: 
+                    0 0 10px #ff0000,
+                    0 0 10px #ff0000,
+                    0 0 10px #ff0000,
+                    0 0 10px #ff0000;
+                    .bookTitle {
+                        color: #ffffff;
+                    }
+                }
+            }
+            .bookBottom {
+                .bottom {
+                    box-shadow: 0 0 10px #0000ff;
+                }
+            }
+        }
+    }
+}
