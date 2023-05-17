@@ -88,7 +88,7 @@
             }
         }
         .openArea {
-            width: 15%;
+            width: 30%;
             margin: 5% 0 0 auto;
             .open {
                 color: rgb(110, 201, 19);
@@ -101,14 +101,6 @@
             .open:hover {
                 text-decoration: underline;
             }
-        }
-        .scroll {
-            color: #ffffff;
-            transform: rotate(90deg);
-            position: absolute;
-            font-size: large;
-            right: -5%;
-            bottom: 25%;
         }
     }
 }

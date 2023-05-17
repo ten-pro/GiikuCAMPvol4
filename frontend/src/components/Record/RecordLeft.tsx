@@ -23,9 +23,8 @@ return (
                 <LeftContnts name='Davinci' position='力自慢' />
             </div>
             <div className={Styles.openArea}>
-                <div className={Styles.open}>開く...</div>
+                <div className={Styles.open}>議事録を開く</div>
             </div>
-            <div className={Styles.scroll}>SCROLL→</div>
         </div>
     </div>
 </>
