@@ -20,7 +20,7 @@ return (
             <HomeGpt color="#33E9E9" src="/HomeImage/gptLogo3.png" placeholder='Curie' position='3' loading='33' positive='333' negative='c' one='cc' all='ccc'/>
             <HomeGpt color="#FFD56A" src="/HomeImage/gptLogo4.png" placeholder='Davinci' position='4' loading='44' positive='444' negative='d' one='dd' all='ddd'/>
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column" }} className={Styles.buttonArea}>
             <HomeButton text="議事録を開く"/>
             <HomeButton text="スタート"/>
         </div>

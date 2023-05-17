@@ -22,10 +22,10 @@
         padding-left: 5px;
         // padding-left: 10px;
         box-shadow: 
-        0 0 10px #0000ff,
-        0 0 10px #0000ff,
-        0 0 10px #0000ff,
-        0 0 10px #0000ff;
+        0 0 10px #ffffff,
+        0 0 10px #ffffff,
+        0 0 10px #ffffff,
+        0 0 10px #ffffff;
     }
     .titleInput::placeholder {
         font-size: 45px;
@@ -37,12 +37,12 @@
     // margin-top: 5vh;
     display: flex;
     margin-top: 5vh;
-    width: 40vw;
+    width: 35vw;
     .left {
         // border: 2px solid #ff0000;
         text-align: center;
-        margin-right: 2vw;
-        margin-left: 15%;
+        margin-right: 1vw;
+        margin-left: 10%;
         .logo1 {
             width: 100px;
             height: 100px;
@@ -53,6 +53,7 @@
             justify-content: space-between;
             white-space: nowrap;
             .change1 {
+                cursor: pointer;
                 display: flex;
                 align-items: center;
                 color: #ffffff;
@@ -71,7 +72,7 @@
             font-size: 40px;
             background-color: transparent;
             color: #ffffff;
-            width: 100%;
+            width: 90%;
             border: none;
             outline: none;
             border-radius: 10px;
@@ -89,6 +90,7 @@
         .gptSetting1 {
             border: none;
             outline: none;
+            width: 85%;
             border-radius: 10px;
             padding: 15px;
             box-shadow: 
@@ -194,34 +196,40 @@
         }
     }
 }
-.button {
-    margin-left: 2vw;
-    width: 15vw;
-    margin-top: 5vh;
-    text-align: center;
-    margin-bottom: 5vh;
-    .buttonDesign {
-        background-color: transparent;
-        font-size: 30px;
-        text-align: center;
-        margin: 0 auto;
-        justify-content: center;
-        width: 100%;
-        padding: 3% 10% 3% 10%;
-        white-space: nowrap;
-        color: #ffffff;
-        box-shadow: 
-        0 0 10px #FB37FF,
-        0 0 10px #FB37FF,
-        0 0 10px #FB37FF,
-        0 0 10px #FB37FF;
-        display: flex;
-        align-items: center;
-        text-shadow: 
-        0 0 10px #FB37FF,
-        0 0 10px #FB37FF,
-        0 0 10px #FB37FF,
-        0 0 10px #FB37FF;
-        border-radius: 10px;
+.buttonArea {
+    // border: 2px solid #0000ff;
+    width: 90%;
+    padding: 30px 0 0 0;
+    .button {
+        // margin-left: 10%;
+        width: 12vw;
+        margin-top: 5vh;
+        margin: 10vh 5vw 0 auto;
+        // text-align: center;
+        .buttonDesign {
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 190%;
+            text-align: center;
+            margin: 0 auto;
+            justify-content: center;
+            width: 100%;
+            padding: 3% 5% 3% 5%;
+            white-space: nowrap;
+            color: #ffffff;
+            box-shadow: 
+            0 0 10px #FB37FF,
+            0 0 10px #FB37FF,
+            0 0 10px #FB37FF,
+            0 0 10px #FB37FF;
+            display: flex;
+            align-items: center;
+            text-shadow: 
+            0 0 10px #FB37FF,
+            0 0 10px #FB37FF,
+            0 0 10px #FB37FF,
+            0 0 10px #FB37FF;
+            border-radius: 10px;
+        }
     }
 }
