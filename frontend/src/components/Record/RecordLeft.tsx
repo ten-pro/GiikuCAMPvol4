@@ -8,7 +8,9 @@ function Home() {
 return (
 <>
     <div className={Styles.left}>
-        <button className={Styles.homeButton}>&lt;&nbsp;ホーム画面</button>
+        <div className={Styles.buttonLine}>
+        <button className={Styles.homeButton}>く&nbsp;ホーム画面</button>
+        </div>
         <div className={Styles.leftBottom}>
         <div className={Styles.title}>
         <div className={Styles.titleText}>タイトル：</div>

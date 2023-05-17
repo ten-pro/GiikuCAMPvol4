@@ -17,8 +17,8 @@ function RecordBook({ color }: bookProps) {
       };
 return (
 <>
-   <div className={Styles.book}>
-    <div className={Styles.bookTitle} style={style}>タイトル</div>
+   <div className={Styles.book} style={style}>
+    <div className={Styles.bookTitle}>タイトル</div>
    </div>
 </>
 )

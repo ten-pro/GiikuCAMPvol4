@@ -22,6 +22,54 @@ return (
                     <Bottom />
                 </div>
             </div>
+            <div className={Styles.bookLine}>
+                <div className={Styles.bookTop}>
+                    <Book color='#ff0000'/>
+                    <Book color='#00A8A8'/>
+                    <Book color='#FB37FF'/>
+                    <Book color='#CC00FF'/>
+                    <Book color='#FFD56A'/>
+                </div>
+                <div className={Styles.bookBottom}>
+                    <Bottom />
+                </div>
+            </div>
+            <div className={Styles.bookLine}>
+                <div className={Styles.bookTop}>
+                    <Book color='#ff0000'/>
+                    <Book color='#00A8A8'/>
+                    <Book color='#FB37FF'/>
+                    <Book color='#CC00FF'/>
+                    <Book color='#FFD56A'/>
+                </div>
+                <div className={Styles.bookBottom}>
+                    <Bottom />
+                </div>
+            </div>
+            <div className={Styles.bookLine}>
+                <div className={Styles.bookTop}>
+                    <Book color='#ff0000'/>
+                    <Book color='#00A8A8'/>
+                    <Book color='#FB37FF'/>
+                    <Book color='#CC00FF'/>
+                    <Book color='#FFD56A'/>
+                </div>
+                <div className={Styles.bookBottom}>
+                    <Bottom />
+                </div>
+            </div>
+            <div className={Styles.bookLine}>
+                <div className={Styles.bookTop}>
+                    <Book color='#ff0000'/>
+                    <Book color='#00A8A8'/>
+                    <Book color='#FB37FF'/>
+                    <Book color='#CC00FF'/>
+                    <Book color='#FFD56A'/>
+                </div>
+                <div className={Styles.bookBottom}>
+                    <Bottom />
+                </div>
+            </div>
         </div>
     </div>
 </>
