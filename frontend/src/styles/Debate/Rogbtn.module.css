@@ -1,0 +1,18 @@
+.btn_area{
+  margin: 0;
+  grid-column:3; /* 列の範囲を指定 */
+  grid-row: 4; /* 行を指定 */
+  width: 9vw;
+  height: 2.8vw;
+  border-radius: 1vw;
+  border: 0.3vw solid #83E1FF;
+  margin-top: 0.3vw;
+  margin-left: 1.5vw;
+}
+.p{
+  display: grid;
+  text-align: center;
+  color: white;
+  margin-top: 0.5vw;
+  font-size: 1.3vw;
+}
