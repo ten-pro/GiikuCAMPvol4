@@ -1,0 +1,30 @@
+.rog2_area {
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 2 / span 3; /* 行を指定 */
+  position: relative;
+  display: inline-block;
+  min-width: 120px;
+  max-width: 90%;
+  max-height: 80%;
+  font-size: 3vw;
+  background: rgba(255, 255, 255, 0.6);
+  border: 0.5vw  solid #CC00FF;
+  border-radius: 1vw;
+  margin-top: 3vw;
+  margin-left: 2vw;
+}
+
+.rog2_area:before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 100.5%;
+  border:3vw solid transparent;
+  border-left: 2.8vw solid #CC00FF;
+}
+
+.rog2 {
+  margin: 0;
+  padding: 2vw;
+  max-width: 100%;
+}

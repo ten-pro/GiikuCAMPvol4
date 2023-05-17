@@ -1,0 +1,108 @@
+.shinkiImage {
+    width: 500px; 
+    height: auto; 
+    margin-top: -40px; 
+    margin-bottom: 0px; 
+  }
+  .shinkiButton {
+    background-color: black;
+    color: white;
+    border: none;
+    outline: 2px solid white;
+    border-radius: 5px;
+    width: 200px;
+    height: 60px;
+    margin-top: 1.5rem;
+  }
+  .shinkiButton:hover {
+    background-color: gray; /* ホバー時の背景色を変更 */
+    cursor: pointer; /* ホバー時のカーソルをポインターに変更 */
+  }
+  .inputField {
+    background-color: black;
+    border: none;
+    outline: 2px solid white;
+    border-radius: 5px;
+    width: 400px;
+    height: 50px;
+    margin-bottom: 1.5rem; 
+    caret-color: white; /* カーソルの色を白に設定 */
+    color: white; /* 入力される文字の色を白に設定 */
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+  }
+  .inputField::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* 薄い白色 */
+    text-align: center;
+  }
+  .inputFieldWithIconMail{
+    background-image: url("/login/icon-mail.svg");
+    /* background-repeat: no-repeat; */
+    background-size: 20px;
+    background-origin: content-box;
+    background-position: 5px center;
+    padding-right: 30px;
+  }
+  .inputFieldWithIconKey{
+    background-image: url("/login/icon-key.svg");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-origin: content-box;
+    background-position: 5px center;
+    padding-right: 30px;
+  }
+  .registerText {
+    display: flex;
+    align-items: center;
+    color:white;
+  }
+  .registerText:hover {
+    cursor: pointer; /* ホバー時のカーソルをポインターに変更 */
+    background-color: gray; /* ホバー時の背景色を変更 */
+  }
+  .registerLine {
+    width: 100%;
+    border: none;
+    border-top: 1px solid white;
+    margin-bottom: 16px;
+  }
+  
+  .container {
+    display: grid;
+    place-items: center;
+    /* flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    height: 100vh;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* 幅いっぱいに表示するため */
+    /* max-width: 500px;  */
+    margin: 0 auto;
+  }
+  
+  .inputWrapper {
+    margin-bottom: 10px; /* 入力フィールドの間隔を調整するためのマージン */
+  }
+  .registerLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px; /* ボタンとの間隔を調整 */
+  }
+  .wrapper {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: -60px;
+    border: none;
+    outline: 2px solid white;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 500px;
+  }

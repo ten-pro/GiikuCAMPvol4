@@ -1,0 +1,5 @@
+.debate_area{
+  display: grid;
+  grid-template-rows: 10vh 40vh 40vh 10vh;
+  grid-template-columns: 15vw 70vw 15vw;
+}
