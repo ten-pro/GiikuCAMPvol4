@@ -4,15 +4,14 @@ import { Inter } from 'next/font/google'
 
 interface HomeButtonProps {
     text: string;
-    src: string;
   }
 const inter = Inter({ subsets: ['latin'] })
 
-function HomeGpt({ text, src }: HomeButtonProps) {
+function HomeGpt({ text }: HomeButtonProps) {
 return (
 <>
     <div className={Styles.button}>
-        <button className={Styles.buttonDesign}>{text} <img src={src}/></button>
+        <button className={Styles.buttonDesign}>{text}</button>
     </div>
 </>
 )

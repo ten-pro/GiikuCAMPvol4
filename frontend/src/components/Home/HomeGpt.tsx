@@ -37,7 +37,7 @@ return (
             <input type="text" className={Styles.gptName1} placeholder={placeholder} style={style}/>
             <div className={Styles.gptSetting1} style={style}>
                 <div className={Styles.gender}>
-                    <div className={Styles.genderTitle}>性別</div>
+                    <div className={Styles.genderTitle}>性別：</div>
                     <select className={Styles.genderSelect}>
                         <option value="null">選択してください</option>
                         <option value="boy">男性</option>
@@ -46,11 +46,11 @@ return (
                     </select>
                 </div>
                 <div className={Styles.character}>
-                    <div className={Styles.characterTitle}>性格</div>
+                    <div className={Styles.characterTitle}>性格：</div>
                     <input type="text" className={Styles.characterInput} placeholder='入力してください'/>
                 </div>
                 <div className={Styles.position}>
-                    <div className={Styles.positionTitle}>立場</div>
+                    <div className={Styles.positionTitle}>立場：</div>
                     <input type="radio" name={position} value='positive' id={positive} className={Styles.positionRadio1} checked/>
                     <label htmlFor={positive} className={Styles.positiveLabel}>肯定</label>
                     <input type="radio" name={position} value='negative' id={negative} className={Styles.positionRadio2}/>
@@ -58,7 +58,7 @@ return (
                 </div>
                 <div className={Styles.loading}>
                     <div className={Styles.loadingTop}>
-                        <div className={Styles.loadingTitle}>読み込み</div>
+                        <div className={Styles.loadingTitle}>読み込み：</div>
                         <input type="radio" name={loading}  value='one' id={one} className={Styles.loadingInput1} checked/>
                         <label htmlFor={one} className={Styles.loadingOne}>自分のみ</label>
                         <input type="radio" name={loading} value='all' id={all} className={Styles.loadingInput1}/>
