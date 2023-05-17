@@ -28,6 +28,7 @@
         0 0 5px #d3d3ff;
     }
     .leftBottom {
+        position: relative;
         box-shadow:
             0 0 10px #bbbbff,
             0 0 10px #bbbbff,
@@ -90,15 +91,24 @@
             width: 15%;
             margin: 5% 0 0 auto;
             .open {
-                color: aqua;
+                color: rgb(110, 201, 19);
                 font-size: 24px;
                 cursor: pointer;
                 // text-align: right;
+                // background-color: #ffffff;
                 white-space: nowrap;
             }
             .open:hover {
                 text-decoration: underline;
             }
+        }
+        .scroll {
+            color: #ffffff;
+            transform: rotate(90deg);
+            position: absolute;
+            font-size: large;
+            right: -5%;
+            bottom: 25%;
         }
     }
 }
@@ -131,6 +141,7 @@
                 display: flex;
                 justify-content: space-around;
                 .book {
+                    cursor: pointer;
                     width: 100px;
                     height: 150px;
                     border-radius: 5px;

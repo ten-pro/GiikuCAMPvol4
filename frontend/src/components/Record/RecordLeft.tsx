@@ -25,6 +25,7 @@ return (
             <div className={Styles.openArea}>
                 <div className={Styles.open}>開く...</div>
             </div>
+            <div className={Styles.scroll}>SCROLL→</div>
         </div>
     </div>
 </>
