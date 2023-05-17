@@ -1,0 +1,68 @@
+.jazzi_area{
+  display: grid;
+  grid-template-rows: 10vh 40vh 40vh 10vh;
+  grid-template-columns: 15vw 70vw 15vw;
+}
+
+.hantei{
+  grid-column: 2;
+  grid-row: 2 / span 3;
+  min-width: 120px;
+  max-width: 90%;
+  max-height: 80%;
+  font-size: 3vw;
+  background:#000;
+  border: 0.5vw  solid #00FF38;
+  margin-top: 3vw;
+  margin-left: 2vw;
+}
+
+.p1{
+  margin: 0;
+  color: white;
+  text-align: center;
+  font-size: 2.5vw;
+  margin-top: 3vw;
+}
+
+.p2{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.erabu{
+  display: flex;
+  justify-content: center;
+  margin-top: 5vw;
+}
+
+.hitei{
+  width: 18vw;
+  height: 8vw;
+  background-color:rgba(165, 40, 0, 0.3);
+  border: 0.5vw solid #A52800;
+}
+
+.koutei{
+  margin-left: 10vw;
+  width: 18vw;
+  height: 8vw;
+  background-color:rgba(94, 57, 201, 0.3) ;
+  border: 0.5vw solid #5E39C9;
+}
+.p3{
+  margin: 0;
+  text-align: center;
+  margin-top: 1.8vw;
+  color: #A52800;
+  font-weight: bold;
+}
+
+.p4{
+  margin: 0;
+  text-align: center;
+  margin-top: 1.8vw;
+  color: #5E39C9;
+  font-weight: bold;
+}
