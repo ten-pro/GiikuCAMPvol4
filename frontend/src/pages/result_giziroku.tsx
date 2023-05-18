@@ -23,8 +23,10 @@ const Result_giziroku = () =>{
         <Rogari3/>
         <Rogari4/>
       </div>
-      <div className={style.gizibtn_area}>
-        <p className={style.gizip}>閉じる</p>
+      <div className={style.gizi_area}>
+        <div className={style.gizibtn_area}>
+          <p className={style.gizip}>閉じる</p>
+        </div>
       </div>
     </div>
   )
