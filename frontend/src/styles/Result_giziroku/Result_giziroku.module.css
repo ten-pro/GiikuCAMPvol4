@@ -1,0 +1,45 @@
+.rog_area{
+  display: grid;
+  grid-template-rows: 10vh 40vh 40vh 10vh;
+  grid-template-columns: 15vw 70vw 15vw;
+}
+
+.hyouzi_area{
+  grid-column: 2;
+  grid-row: 2 / span 3;
+  border-radius: 1.5vw;
+  border: 0.4vw solid #00FF38;
+  min-width: 120px;
+  max-width: 95%;
+  max-height: 80%;
+  margin-top: 2vw;
+  margin-left: 2vw;
+  overflow: auto; /* スクロールバーを表示する */
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.gizi_area{
+  display: grid;
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 4; /* 行を指定 */
+  justify-content: center;
+  align-items: center;
+}
+
+.gizibtn_area{
+  justify-self: center;
+  align-self: center;
+  width: 13vw;
+  height: 3.2vw;
+  border-radius: 1vw;
+  border: 0.3vw solid #83E1FF;
+}
+
+.gizip{
+  margin: 0;
+  display: grid;
+  color: white;
+  text-align: center;
+  font-size: 1.8vw;
+  margin-top: 0.3vw;
+}
