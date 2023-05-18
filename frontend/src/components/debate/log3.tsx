@@ -1,7 +1,7 @@
 import { useState } from "react"
 import style from "../../styles/Debate/Rog3.module.css"
 
-const Rog3 = () =>{
+const Log3 = () =>{
 
   const hyouzi3 = useState<Boolean>(true)
   return(
@@ -12,4 +12,4 @@ const Rog3 = () =>{
     </>
   )
 }
-export default Rog3;
+export default Log3;
