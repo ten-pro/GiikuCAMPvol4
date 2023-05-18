@@ -12,7 +12,7 @@ CREATE TABLE gpt_tbl(
     user_id         INT                             ,
     gpt_name        VARCHAR(100)    NOT NULL        ,
     gpt_img         INT             NOT NULL        ,
-    character       VARCHAR(500)    NOT NULL        ,
+    gpt_character   VARCHAR(500)    NOT NULL        ,
     position        VARCHAR(50)     NOT NULL        ,
     search          INT             DEFAULT 0       ,
     PRIMARY KEY     (gpt_id)                        ,
