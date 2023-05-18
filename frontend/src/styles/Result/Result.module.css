@@ -18,16 +18,22 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.homebtn_area{
+.btn_area{
   margin: 0;
   grid-column:2; /* 列の範囲を指定 */
   grid-row: 4; /* 行を指定 */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.homebtn_area{
+  justify-self: center;
+  align-self: center;
   width: 11vw;
   height: 3vw;
   border: 0.2vw solid #83E1FF;
   position: relative;
-  margin-top: 0.2vw;
-  margin-left: 29vw;
   border-radius: 1vw;
 }
 

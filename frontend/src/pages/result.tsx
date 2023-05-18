@@ -33,8 +33,10 @@ const Result = () =>{
       <Hozon2/>
       <Hozon3/>
       <Hozon4/>
-      <div className={style.homebtn_area}>
-        <p className={style.homep}>ホームへ</p>
+      <div className={style.btn_area}>
+        <div className={style.homebtn_area}>
+          <p className={style.homep}>ホームへ</p>
+        </div>
       </div>
     </div>
   )
