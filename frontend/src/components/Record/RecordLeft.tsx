@@ -21,10 +21,11 @@ return (
                 <LeftContnts name='Babbage' position='命知らず' />
                 <LeftContnts name='Curie' position='正直者' />
                 <LeftContnts name='Davinci' position='力自慢' />
-            </div>
-            <div className={Styles.openArea}>
+                <div className={Styles.openArea}>
                 <div className={Styles.open}>議事録を開く</div>
             </div>
+            </div>
+            
         </div>
     </div>
 </>
