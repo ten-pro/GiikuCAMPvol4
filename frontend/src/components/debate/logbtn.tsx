@@ -1,6 +1,6 @@
 import style from "../../styles/Debate/Rogbtn.module.css";
 
-const Rogbtn = ()  =>{
+const Logbtn = ()  =>{
   return(
     <>
     <div className={style.btn_area}>
@@ -9,4 +9,4 @@ const Rogbtn = ()  =>{
     </>
   )
 }
-export default Rogbtn;
+export default Logbtn;
