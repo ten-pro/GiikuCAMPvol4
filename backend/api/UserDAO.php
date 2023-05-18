@@ -52,6 +52,9 @@ class Login
     function create_user($pass, $mail)
     {
         try {
+            
+            if(empty($pass) || empty($mail))
+            return 'nodata';
 
             $pdo = $this->get_pdo();
 
