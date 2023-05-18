@@ -1,0 +1,21 @@
+.img{
+  width: 3.5vw;
+  height: 3.5vw;
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 2 / span 3; /* 行を指定 */
+  margin-top: 3.6vw;
+  margin-left: 90%;
+  border-radius: 50%;
+  border:0.3vw solid rgba(131, 225, 255, 1);
+  position: relative;
+}
+
+.maru{
+  position: absolute;
+  margin:0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5vw;
+  margin-left: 0.7vw;
+  color:rgba(131, 225, 255, 1) ;
+}
