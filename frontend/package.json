@@ -21,6 +21,7 @@
     "react-dom": "18.2.0",
     "sass": "^1.62.1",
     "sweetalert": "^2.1.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "vue-axios": "^3.5.2"
   }
 }
