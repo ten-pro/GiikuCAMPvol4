@@ -40,7 +40,8 @@ const login: React.FC = () => {
       <div className={styles.wrapper}>
         <form onSubmit={handleFormSubmit} className={styles.form}>
           <div className={styles.inputWrapper}>
-            <div>
+            <div className={styles.inputFieldWithIconMail}>
+              <img src='/login/icon-mail.svg' className={styles.img}></img>
               <input
                 type="email"
                 id="email"
@@ -48,13 +49,14 @@ const login: React.FC = () => {
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="メールアドレス"
-                className={`${styles.inputField} ${styles.inputFieldWithIconMail}`}
+                className={styles.inputField}
                 maxLength={50}
               />
             </div>
           </div>
           <div className={styles.inputWrapper}>
-            <div>
+            <div className={styles.inputFieldWithIconKey}>
+            <img src='/login/icon-key.svg' className={styles.img}></img>
               <input
                 type="password"
                 id="password"
@@ -62,7 +64,7 @@ const login: React.FC = () => {
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="パスワード"
-                className={`${styles.inputField} ${styles.inputFieldWithIconKey}`}
+                className={styles.inputField}
                 maxLength={50}
               />
             </div>

@@ -48,40 +48,49 @@ const shinki: React.FC<RegistrationFormProps> = ({ onRegister }) => {
     <div className={styles.wrapper}>
     <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputWrapper}>
+          <div className={styles.inputFieldWithIconMail}>
+          <img src='/login/icon-mail.svg' className={styles.img}></img>
         <input
           type="email"
           id="email"
           value={email}
           onChange={handleEmailChange}
           placeholder="メールアドレス"
-          className={`${styles.inputField} ${styles.centerPlaceholder} ${styles.inputFieldWithIconMail}`}
+          className={styles.inputField}
           maxLength={50}
           />
+          </div>
       </div>
       <div className={styles.inputWrapper}>
+        <div className={styles.inputFieldWithIconKey}>
+        <img src='/login/icon-key.svg' className={styles.img}></img>
         <input
           type="password"
           id="password"
           value={password}
           onChange={handlePasswordChange}
           placeholder="パスワード"
-          className={`${styles.inputField} ${styles.centerPlaceholder} ${styles.inputFieldWithIconKey}`}
+          className={styles.inputField}
           maxLength={50}
           />
+          </div>
       </div>
       <div className={styles.inputWrapper}>
+        <div className={styles.inputFieldWithIconKey}>
+        <img src='/login/icon-key.svg' className={styles.img}></img>
         <input
           type="password"
           id="confirmPassword"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
           placeholder="パスワード再確認"
-          className={`${styles.inputField} ${styles.centerPlaceholder} ${styles.inputFieldWithIconKey}`}
+          className={styles.inputField}
           maxLength={50}
           />
+          </div>
       </div>
+      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
       <button type="submit" className={styles.shinkiButton}>登録</button>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       <div className={styles.registerLink}>
         <a href="/login" className={styles.registerText}>アカウントをすでに登録済みの方</a>
       </div>
