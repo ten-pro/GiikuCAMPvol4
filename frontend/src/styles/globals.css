@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: url("/background.jpeg");
+  /* background-color: blueviolet; */
   background-size: cover;
   background-position: center;
   height: 100vh;
