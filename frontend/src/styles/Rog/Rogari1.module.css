@@ -1,0 +1,40 @@
+.rogari_area{
+  display: flex;
+}
+
+.img1{
+  width: 6.8vw;
+  height: 6.8vw;
+  margin-top: 1.6vw;
+  margin-left: 2vw;
+}
+
+.fukidasi_area {
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 2 / span 3; /* 行を指定 */
+  position: relative;
+  display: inline-block;
+  min-width: 100px;
+  max-width: 60%;
+  max-height: 40%;
+  font-size: 1.5vw;
+  background: rgba(255, 255, 255, 0.6);
+  border: 0.3vw  solid #FF0000;
+  border-radius: 1vw;
+  margin-top: 1vw;
+  margin-left: 4vw;
+}
+
+.fukidasi_area:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: -5.2%;
+  border: 0.8vw solid transparent;
+  border-right: 1.3vw solid #FF0000;
+}
+
+.p1{
+  margin: 0;
+  padding: 1vw;
+}
