@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "sass": "^1.62.1"
+    "axios": "^1.4.0",
+    "sass": "^1.62.1",
+    "vue-axios": "^3.5.2"
   }
 }

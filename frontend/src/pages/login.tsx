@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import styles from '@/styles/login.module.css';
+import axios from 'axios';
 
 const login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const loginn = async () => {
+    try {
+      const response = await axios.post(
+        'https://mp-class.chips.jp/debate/Main.php',
+        {
+          login_user: '',
+          email: email,
+          password: password
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
@@ -68,7 +84,7 @@ const login: React.FC = () => {
             </div>
           </div>
           {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
-          <button type="submit" className={styles.loginButton}>
+          <button type="submit" className={styles.loginButton} onClick={loginn}>
             ログイン
           </button>
           <div className={styles.registerLink}>
