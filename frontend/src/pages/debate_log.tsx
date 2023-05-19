@@ -1,3 +1,4 @@
+import React from "react";
 import style from "../styles/Rog/Debate_rog.module.css";
 import Title from "@/components/debate/title";
 import User1 from "@/components/debate/user1";
@@ -10,14 +11,36 @@ import Rogari2 from "@/components/debate_rog/rogari2";
 import Rogari3 from "@/components/debate_rog/rogari3";
 import Rogari4 from "@/components/debate_rog/rogari4";
 
-const Debate_rog = () =>{
+interface user  {
+  name:String,
+  seikaku:String
+}
+
+const Debate_log :React.FC = () =>{
+
+  const user1 :user= {
+    name:"test1",
+    seikaku:"せいかく"
+  }
+  const user2 :user= {
+    name:"test2",
+    seikaku:"せいかく"
+  }
+  const user3 :user= {
+    name:"test3",
+    seikaku:"せいかく"
+  }
+  const user4 :user= {
+    name:"test4",
+    seikaku:"せいかく"
+  }
   return(
     <div className={style.rog_area}>
       <Title/>
-      <User1/>
-      <User2/>
-      <User3/>
-      <User4/>
+      <User1 data1 = {user1}/>
+      <User2 data2 = {user2}/>
+      <User3 data3 = {user3}/>
+      <User4 data4 = {user4}/>
       <div className={style.hyouzi_area}>
         <Rogari1/>
         <Rogari2/>
@@ -28,4 +51,4 @@ const Debate_rog = () =>{
     </div>
   )
 }
-export default Debate_rog;
+export default Debate_log;
