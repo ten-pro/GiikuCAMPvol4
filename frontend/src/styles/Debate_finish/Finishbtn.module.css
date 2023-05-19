@@ -1,0 +1,23 @@
+.finish_area{
+  display: grid;
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 4; /* 行を指定 */
+  justify-content: center;
+  align-items: center;
+}
+.btn_area{
+  justify-self: center;
+  align-self: center;
+  width: 13vw;
+  height: 3.2vw;
+  border-radius: 1vw;
+  border: 0.3vw solid #83E1FF;
+}
+.p{
+  margin: 0;
+  display: grid;
+  color: white;
+  text-align: center;
+  font-size: 1.8vw;
+  margin-top: 0.3vw;
+}

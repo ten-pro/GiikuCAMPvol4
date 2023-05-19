@@ -4,11 +4,11 @@ import User1 from "@/components/debate/user1";
 import User2 from "@/components/debate/user2";
 import User3 from "@/components/debate/user3";
 import User4 from "@/components/debate/user4";
-import Rogbtn from "@/components/debate/rogbtn";
-import Rog1 from "@/components/debate/rog1";
-import Rog3 from "@/components/debate/rog3";
-import Rog2 from "@/components/debate/rog2";
-import Rog4 from "@/components/debate/rog4";
+import Rogbtn from "@/components/debate/logbtn";
+import Rog1 from "@/components/debate/log1";
+import Rog3 from "@/components/debate/log3";
+import Rog2 from "@/components/debate/log2";
+import Rog4 from "@/components/debate/log4";
 
 const Debate = () =>{
   return(
