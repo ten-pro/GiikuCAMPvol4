@@ -1,7 +1,7 @@
 .shinkiImage {
     width: 500px; 
     height: auto; 
-    margin-top: -40px; 
+    margin-top: -25px; 
     margin-bottom: 0px; 
   }
   .shinkiButton {
@@ -108,7 +108,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 40px;
-    margin-top: -60px;
+    margin-top: -30px;
     border: none;
     outline: 2px solid white;
     border-radius: 30px;
