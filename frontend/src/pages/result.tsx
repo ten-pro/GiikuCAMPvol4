@@ -13,8 +13,17 @@ import Hozon1 from "@/components/result/hozon1";
 import Hozon2 from "@/components/result/hozon2";
 import Hozon3 from "@/components/result/hozon3";
 import Hozon4 from "@/components/result/hozon4";
+import { useRouter } from "next/router";
 
 const Result = () =>{
+
+  const router = useRouter();
+
+  const handle  = () =>{
+
+    router.push('/home');
+  }
+
   return(
     <div className={style.rog_area}>
       <Title/>
@@ -28,13 +37,12 @@ const Result = () =>{
         <Rogari3/>
         <Rogari4/>
       </div>
-      <Tozirubtn/>
       <Hozon1/>
       <Hozon2/>
       <Hozon3/>
       <Hozon4/>
       <div className={style.btn_area}>
-        <div className={style.homebtn_area}>
+        <div className={style.homebtn_area} onClick={handle}>
           <p className={style.homep}>ホームへ</p>
         </div>
       </div>
