@@ -26,6 +26,16 @@ const Result = () =>{
 
   return(
     <div className={style.rog_area}>
+      <div className={style.area1}>
+        <div className={style.box1}>
+          <p className={style.p1}>肯定</p>
+        </div>
+      </div>
+      <div className={style.area2}>
+        <div className={style.box2}>
+          <p className={style.p2}>否定</p>
+        </div>
+      </div>
       <Title/>
       <User1/>
       <User2/>
