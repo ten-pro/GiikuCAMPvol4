@@ -36,6 +36,16 @@ const Debate_log :React.FC = () =>{
   }
   return(
     <div className={style.rog_area}>
+      <div className={style.area1}>
+        <div className={style.box1}>
+          <p className={style.p1}>肯定</p>
+        </div>
+      </div>
+      <div className={style.area2}>
+        <div className={style.box2}>
+          <p className={style.p2}>肯定</p>
+        </div>
+      </div>
       <Title/>
       <User1 data1 = {user1}/>
       <User2 data2 = {user2}/>
