@@ -32,14 +32,14 @@ function Home() {
             const res = await axios.post(
                 'http://mp-class.chips.jp/debate/Main.php',
                 {
-                    "create_debate": "",
+                    "create_gpt": "",
                     "gpts": [
                         {
                             "user_id": 1,
                             "gpt_name": "GPT 1",
                             "gpt_img": 1,
                             "gpt_character": "Character 1",
-                            "position": "否定"
+                            "position": "肯定"
                         },
                         {
                             "user_id": 1,
@@ -62,11 +62,7 @@ function Home() {
                             "gpt_character": "Character 1",
                             "position": "否定"
                         }
-                    ],
-                    "debate":{
-                        "id":1,
-                        "title":"debate_title"
-                    }
+                    ]
                 },
                 {
                     headers: {
@@ -84,13 +80,13 @@ return (
 <>
     <HomeTitle />
     <div style={{display: "flex"}}>
-        <HomeGpt color="#ff0000" src="/HomeImage/gptLogo1.png" placeholder='Ada' position='1' loading='11' positive='111' negative='a' one='aa' all='aaa'/>
-        <HomeGpt color="#CC00FF" src="/HomeImage/gptLogo2.png" placeholder='Babbage' position='2' loading='22' positive='222' negative='b' one='bb' all='bbb'/>
+        <HomeGpt color="#ff0000" lCheck={false} pCheck={true} src="/HomeImage/gptLogo1.png" placeholder='Ada' position='1' loading='11' positive='111' negative='a' one='aa' all='aaa'/>
+        <HomeGpt color="#CC00FF" lCheck={true} pCheck={false} src="/HomeImage/gptLogo2.png" placeholder='Babbage' position='2' loading='22' positive='222' negative='b' one='bb' all='bbb'/>
     </div>
     <div style={{display: "flex"}}>
         <div style={{display: "flex"}}>
-            <HomeGpt color="#33E9E9" src="/HomeImage/gptLogo3.png" placeholder='Curie' position='3' loading='33' positive='333' negative='c' one='cc' all='ccc'/>
-            <HomeGpt color="#FFD56A" src="/HomeImage/gptLogo4.png" placeholder='Davinci' position='4' loading='44' positive='444' negative='d' one='dd' all='ddd'/>
+            <HomeGpt color="#33E9E9" lCheck={false} pCheck={true} src="/HomeImage/gptLogo3.png" placeholder='Curie' position='3' loading='33' positive='333' negative='c' one='cc' all='ccc'/>
+            <HomeGpt color="#FFD56A" lCheck={true} pCheck={false} src="/HomeImage/gptLogo4.png" placeholder='Davinci' position='4' loading='44' positive='444' negative='d' one='dd' all='ddd'/>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }} className={Styles.buttonArea}>
             <HomeButton text="議事録を開く"/>
