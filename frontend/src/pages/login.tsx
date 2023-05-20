@@ -7,17 +7,38 @@ const login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const loginn = async () => {
+  const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        'https://mp-class.chips.jp/debate/Main.php',
-        {
-          login_user: '',
-          email: email,
-          password: password
+      if (!email && !password) {
+        setErrorMessage('＊メールアドレスとパスワードが入力されていません');
+      } else if (!email) {
+        setErrorMessage('＊メールアドレスが入力されていません');
+      } else if (!password) {
+        setErrorMessage('＊パスワードが入力されていません');
+      } else {
+        const response = await axios.post(
+          'https://mp-class.chips.jp/debate/Main.php',
+          {
+            login_user: '',
+            mail: email,
+            pass: password
+          },
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            }
+          }
+        );
+        console.log(response);
+        if(response.data.login){
+          localStorage.setItem('isLoggedIn', 'true');
+          window.location.href="/home"
+        }else{
+          setErrorMessage(response.data.result);
+          setEmail('');
+          setPassword('');
         }
-      );
-      console.log(response);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -30,31 +51,11 @@ const login: React.FC = () => {
     setPassword(event.target.value);
   };
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!email && !password) {
-      setErrorMessage('＊メールアドレスとパスワードが入力されていません');
-    } else if (!email) {
-      setErrorMessage('＊メールアドレスが入力されていません');
-    } else if (!password) {
-      setErrorMessage('＊パスワードが入力されていません');
-    } else {
-      setErrorMessage('');
-
-    // フォームの送信処理
-
-    // フォームの入力値を初期化
-    setEmail('');
-    setPassword('');
-    }
-  };
-
   return (
     <div className={styles.container}>
       <img src="/login/title.svg" alt="login" className={styles.loginImage} />
       <div className={styles.wrapper}>
-        <form onSubmit={handleFormSubmit} className={styles.form}>
+        <div className={styles.form}>
           <div className={styles.inputWrapper}>
             <div className={styles.inputFieldWithIconMail}>
               <img src='/login/icon-mail.svg' className={styles.img}></img>
@@ -86,7 +87,7 @@ const login: React.FC = () => {
             </div>
           </div>
           {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
-          <button type="submit" className={styles.loginButton} onClick={loginn}>
+          <button className={styles.loginButton} onClick={handleLogin}>
             ログイン
           </button>
           <div className={styles.registerLink}>
@@ -94,7 +95,7 @@ const login: React.FC = () => {
               新規登録
             </a>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
