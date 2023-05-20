@@ -8,8 +8,15 @@ import Rogari1 from "@/components/debate_rog/rogari1";
 import Rogari2 from "@/components/debate_rog/rogari2";
 import Rogari3 from "@/components/debate_rog/rogari3";
 import Rogari4 from "@/components/debate_rog/rogari4";
+import { useRouter } from "next/router";
 
 const Result_giziroku = () =>{
+
+  const router = useRouter();
+
+  const handle = () =>{
+    router.push('/recode');
+  }
   return(
     <div className={style.rog_area}>
       <Title/>
@@ -24,7 +31,7 @@ const Result_giziroku = () =>{
         <Rogari4/>
       </div>
       <div className={style.gizi_area}>
-        <div className={style.gizibtn_area}>
+        <div className={style.gizibtn_area} onClick={handle}>
           <p className={style.gizip}>閉じる</p>
         </div>
       </div>
