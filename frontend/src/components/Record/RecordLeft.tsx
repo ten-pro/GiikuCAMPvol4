@@ -3,8 +3,10 @@ import LeftContnts from '@/components/Record/RecordLeftContents'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
-
-function Home() {
+interface homeProps {
+    title: string;
+}
+function RecordLeft({ title }:homeProps) {
 return (
 <>
     <div className={Styles.left}>
@@ -15,7 +17,7 @@ return (
             <div className={Styles.leftBottomm}>
                 <div className={Styles.title}>
                     <div className={Styles.titleText}>タイトル：</div>
-                    <div className={Styles.titleVar}>必要なのは電気 OR ガス</div>
+                    <div className={Styles.titleVar}>{ title }</div>
                 </div>
                 <LeftContnts name='Ada' position='頭でっかち' />
                 <LeftContnts name='Babbage' position='命知らず' />
@@ -32,4 +34,4 @@ return (
 )
 }
 
-export default Home
+export default RecordLeft

@@ -8,6 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 function record() {
     const [books, setBooks] = useState(0);
+    const [bookIndex, setBookIndex] = useState<number>(0);
+    const [titleText, setTitleText] = useState('');
     const get_record = async () => {
         try {
             const res = await axios.post(
@@ -23,7 +25,7 @@ function record() {
                 }
             );
             console.log(res.data);
-            console.log(res.data.length);
+            setTitleText(res.data[bookIndex].title);
             setBooks(res.data.length)
         } catch(error) {
             console.log(error);
@@ -32,12 +34,18 @@ function record() {
 
     useEffect(() => {
         get_record();
-    }, []); 
+    }, [bookIndex]); 
+
+    const bookClick = (bookIndex: number) => {
+        setBookIndex(bookIndex);
+        // console.log(`Book index ${bookIndex} selected.`);
+        console.log(titleText);
+    };
 return (
 <>
     <div className={Styles.record}>
-        <Left />
-        <Right books={12}/>
+        <Left title={titleText}/>
+        <Right books={12} bookNumber={bookClick}/>
         {/* <Right books={books}/> */}
     </div>
 </>

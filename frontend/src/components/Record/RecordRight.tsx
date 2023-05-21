@@ -7,10 +7,15 @@ const inter = Inter({ subsets: ['latin'] })
 
 interface RightProps {
     books: number;
+    bookNumber:(bookIndex: number) => void;
 }
-function RecordRight({ books }: RightProps) {
+function RecordRight({ books, bookNumber }: RightProps) {
     const colors = ['#ff0000', '#FB37FF', '#00A8A8', '#CC00FF', '#FFD56A'];
-    // const totalBooks = 16;
+    
+    const handleClick = (bookIndex: number) => {
+        bookNumber(bookIndex);
+        console.log(bookIndex);
+    };
 
     return (
         <div className={Styles.right}>
@@ -23,7 +28,11 @@ function RecordRight({ books }: RightProps) {
                         <div className={Styles.bookTop}>
                             {[...Array(5)].map((_, j) => {
                                 const bookIndex = i * 5 + j;
-                                return <Book key={j} color={bookIndex < books ? colors[bookIndex % colors.length] : 'transparent'} isVisible={bookIndex < books} />
+                                return (
+                                    <div key={j} onClick={() => handleClick(bookIndex)}>
+                                        <Book color={bookIndex < books ? colors[bookIndex % colors.length] : 'transparent'} isVisible={bookIndex < books} />
+                                    </div>
+                                );
                             })}
                         </div>
                         <div className={Styles.bookBottom}>
