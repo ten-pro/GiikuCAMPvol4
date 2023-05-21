@@ -10,7 +10,7 @@ require_once './UserDAO.php';
 require_once './GptDAO.php';
 require_once './DebateDAO.php';
 
-$data = 'noapi';
+$data = '引数が存在しません';
 
 //login_userの引数がある時の処理
 if (isset($_POST['login_user']) == true) {
@@ -59,6 +59,24 @@ if (isset($_POST['get_gptlist']) == true) {
 if (isset($_POST['search_gpt']) == true) {
     $class = new Gpt();
     $data = $class->search_gpt($_POST['character']);
+}
+
+//get_minutesの引数がある時の処理
+if (isset($_POST['get_minutes']) == true) {
+    $class = new Debate();
+    $data = $class->get_minutes($_POST['user_id']);
+}
+
+//get_talklistの引数がある時の処理
+if (isset($_POST['get_talklist']) == true) {
+    $class = new Debate();
+    $data = $class->get_talklist($_POST['debate_id']);
+}
+
+//get_debate_infoの引数がある時の処理
+if (isset($_POST['get_debate_info']) == true) {
+    $class = new Debate();
+    $data = $class->get_debate_info($_POST['debate_id']);
 }
 
 
