@@ -28,7 +28,7 @@ class Debate
         return $data;
     }
 
-    function create_talk($talks)
+    function create_talk($debate_id, $judgement, $talks)
     {
         try {
 
@@ -37,11 +37,18 @@ class Debate
             $ps = $pdo->prepare($sql);
             foreach ($talks as $row) {
                 $ps->execute([
-                    $row['debate_id'],
+                    $debate_id,
                     $row['gpt_id'],
                     $row['talk']
                 ]);
             }
+
+            $sql2 = "UPDATE debate_tbl SET judgement = ? WHERE debate_id = ?";
+            $ps2 = $pdo->prepare($sql2);
+            $ps2->bindValue(1, $judgement, PDO::PARAM_STR);
+            $ps2->bindValue(2, $debate_id, PDO::PARAM_INT);
+            $ps2->execute();
+
             $data = "created";
         } catch (Exception $e) {
             $data = $e->getMessage();
@@ -89,7 +96,17 @@ class Debate
             $ps->bindValue(1, $debate_id, PDO::PARAM_INT);
             $ps->execute();
             $search = $ps->fetchAll(PDO::FETCH_ASSOC);
-            $data = $search;
+
+            $sql2 = "SELECT * FROM debate_tbl WHERE debate_id = ?";
+            $ps2 = $pdo->prepare($sql2);
+            $ps2->bindValue(1, $debate_id, PDO::PARAM_INT);
+            $ps2->execute();
+            $search2 = $ps->fetchAll(PDO::FETCH_ASSOC);
+
+            $data = array(
+                'talk_list' => $search,
+                'debate' => $search2
+            );
         } catch (Exception $e) {
             $data = $e->getMessage();
         } catch (PDOException $e) {
@@ -109,7 +126,7 @@ class Debate
             $ps->execute();
             $search = $ps->fetchAll(PDO::FETCH_ASSOC);
             $class = new Gpt();
-            
+
             foreach ($search as $row) {
                 $data[] = array(
                     'debate_id' => $row['debate_id'],
