@@ -32,38 +32,46 @@ function Home() {
             const res = await axios.post(
                 'http://mp-class.chips.jp/debate/Main.php',
                 {
-                    "create_gpt": "",
-                    "gpts": [
-                        {
-                            "user_id": 1,
-                            "gpt_name": "GPT 1",
-                            "gpt_img": 1,
-                            "gpt_character": "Character 1",
-                            "position": "肯定"
-                        },
-                        {
-                            "user_id": 1,
-                            "gpt_name": "GPT 2",
-                            "gpt_img": 2,
-                            "gpt_character": "Character 2",
-                            "position": "肯定"
-                        },
-                        {
-                            "user_id": 1,
-                            "gpt_name": "GPT 1",
-                            "gpt_img": 1,
-                            "gpt_character": "Character 1",
-                            "position": "否定"
-                        },
-                        {
-                            "user_id": 1,
-                            "gpt_name": "GPT 1",
-                            "gpt_img": 1,
-                            "gpt_character": "Character 1",
-                            "position": "否定"
-                        }
-                    ]
-                },
+    "create_debate": "",
+    "gpts": [
+        {
+            "user_id": 1,
+            "gpt_name": "GPT 1",
+            "gpt_gender": "男性",
+            "gpt_img": 1,
+            "gpt_character": "Character 1",
+            "position": "否定"
+        },
+        {
+            "user_id": 1,
+            "gpt_name": "GPT 2",
+            "gpt_gender": "男性",
+            "gpt_img": 2,
+            "gpt_character": "Character 2",
+            "position": "肯定"
+        },
+        {
+            "user_id": 1,
+            "gpt_name": "GPT 1",
+            "gpt_gender": "男性",
+            "gpt_img": 1,
+            "gpt_character": "Character 1",
+            "position": "否定"
+        },
+        {
+            "user_id": 1,
+            "gpt_name": "GPT 1",
+            "gpt_gender": "男性",
+            "gpt_img": 1,
+            "gpt_character": "Character 1",
+            "position": "否定"
+        }
+    ],
+    "debate":{
+        "id":1,
+        "title":"debate_title"
+    }
+},
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
