@@ -35,7 +35,7 @@ if (isset($json_data['create_gpt']) && !empty($json_data['gpts'])) {
 //create_talkの引数がある時の処理
 if (isset($json_data['create_talk']) && !empty($json_data['talks'])) {
     $class = new Debate();
-    $data = $class->create_talk($json_data['talks']);
+    $data = $class->create_talk($json_data['debate_id'],$json_data['judgement'],$json_data['talks']);
 }
 
 //create_debateの引数がある時の処理
