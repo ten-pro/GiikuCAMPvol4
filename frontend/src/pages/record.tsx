@@ -10,6 +10,8 @@ function record() {
     const [books, setBooks] = useState(0);
     const [bookIndex, setBookIndex] = useState<number>(0);
     const [titleText, setTitleText] = useState('');
+    const [bookTitles, setBookTitles] = useState<string[]>([]);
+
     const get_record = async () => {
         try {
             const res = await axios.post(
@@ -24,6 +26,8 @@ function record() {
                     },
                 }
             );
+            const titles = res.data.map((item: any) => item.title);
+            setBookTitles(titles);
             console.log(res.data);
             setTitleText(res.data[bookIndex].title);
             setBooks(res.data.length)
@@ -45,8 +49,8 @@ return (
 <>
     <div className={Styles.record}>
         <Left title={titleText}/>
-        <Right books={12} bookNumber={bookClick}/>
-        {/* <Right books={books}/> */}
+        <Right books={books} bookNumber={bookClick} bookTitles={bookTitles}/>
+
     </div>
 </>
 )

@@ -8,8 +8,9 @@ const inter = Inter({ subsets: ['latin'] })
 interface RightProps {
     books: number;
     bookNumber:(bookIndex: number) => void;
+    bookTitles: string[];
 }
-function RecordRight({ books, bookNumber }: RightProps) {
+function RecordRight({ books, bookNumber, bookTitles }: RightProps) {
     const colors = ['#ff0000', '#FB37FF', '#00A8A8', '#CC00FF', '#FFD56A'];
     
     const handleClick = (bookIndex: number) => {
@@ -30,7 +31,9 @@ function RecordRight({ books, bookNumber }: RightProps) {
                                 const bookIndex = i * 5 + j;
                                 return (
                                     <div key={j} onClick={() => handleClick(bookIndex)}>
-                                        <Book color={bookIndex < books ? colors[bookIndex % colors.length] : 'transparent'} isVisible={bookIndex < books} />
+                                        <Book color={bookIndex < books ? colors[bookIndex % colors.length] : 'transparent'}
+                                        isVisible={bookIndex < books}
+                                        bookTitle={bookTitles[bookIndex] || ''}/>
                                     </div>
                                 );
                             })}

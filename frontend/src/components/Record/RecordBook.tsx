@@ -6,9 +6,10 @@ const inter = Inter({ subsets: ['latin'] })
 interface bookProps {
     color:string;
     isVisible: boolean;
+    bookTitle: string;
 }
 
-function RecordBook({ color, isVisible }: bookProps) {
+function RecordBook({ color, isVisible, bookTitle }: bookProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -20,7 +21,7 @@ function RecordBook({ color, isVisible }: bookProps) {
 
     return (
         <div className={Styles.book} style={style}>
-            <div className={Styles.bookTitle} style={{color: isVisible ? '#ffffff' : 'transparent'}}>タイトル</div>
+            <div className={Styles.bookTitle} style={{color: isVisible ? '#ffffff' : 'transparent'}}>{bookTitle}</div>
         </div>
     );
 }
