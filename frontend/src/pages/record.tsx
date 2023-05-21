@@ -11,6 +11,8 @@ function record() {
     const [bookIndex, setBookIndex] = useState<number>(0);
     const [titleText, setTitleText] = useState('');
     const [bookTitles, setBookTitles] = useState<string[]>([]);
+    const [names, setNames] = useState<string[]>([]);
+    const [positions, setPositions] = useState<string[]>([]);
 
     const get_record = async () => {
         try {
@@ -27,6 +29,10 @@ function record() {
                 }
             );
             const titles = res.data.map((item: any) => item.title);
+            const names = res.data[bookIndex].gpts.map((item: any) => item.gpt_name); 
+            const positions = res.data[bookIndex].gpts.map((item: any) => item.gpt_character);
+            setPositions(positions);
+            setNames(names);
             setBookTitles(titles);
             console.log(res.data);
             setTitleText(res.data[bookIndex].title);
@@ -48,7 +54,7 @@ function record() {
 return (
 <>
     <div className={Styles.record}>
-        <Left title={titleText}/>
+        <Left title={titleText} names={names} positions={positions}/>
         <Right books={books} bookNumber={bookClick} bookTitles={bookTitles}/>
 
     </div>
