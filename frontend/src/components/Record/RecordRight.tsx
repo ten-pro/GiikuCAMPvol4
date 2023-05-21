@@ -15,7 +15,7 @@ function RecordRight({ books, bookNumber, bookTitles }: RightProps) {
     
     const handleClick = (bookIndex: number) => {
         bookNumber(bookIndex);
-        console.log(bookIndex);
+        // console.log(bookIndex);
     };
 
     return (

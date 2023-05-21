@@ -34,7 +34,9 @@ function record() {
             setPositions(positions);
             setNames(names);
             setBookTitles(titles);
-            console.log(res.data);
+            const debateId = res.data[bookIndex].debate_id;
+            localStorage.setItem('debateId', debateId);
+            localStorage
             setTitleText(res.data[bookIndex].title);
             setBooks(res.data.length)
         } catch(error) {
@@ -49,7 +51,7 @@ function record() {
     const bookClick = (bookIndex: number) => {
         setBookIndex(bookIndex);
         // console.log(`Book index ${bookIndex} selected.`);
-        console.log(titleText);
+        // console.log(titleText);
     };
 return (
 <>
