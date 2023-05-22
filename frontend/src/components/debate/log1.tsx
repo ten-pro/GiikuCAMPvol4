@@ -1,14 +1,18 @@
 import { useState } from "react";
 import style from "../../styles/Debate/Rog1.module.css"
 
-const Log1 = () =>{
+type LogProps = {
+  log1: string;
+};
 
-  const hyouzi = useState<boolean>(true);
+const Log1 :React.FC<LogProps>= ({log1}) =>{
 
-  return(
+  const hyouzi1 = useState<boolean>(true);
+  
+  return (
     <>
-    <div className={style.rog1_area} style={{display:hyouzi?'block':'none'}}>
-      <p className={style.rog1}>学費の無償化ありありありありありありありありありありありありありありありありありあり</p>
+      <div className={style.rog1_area} style={{display:hyouzi1?'block':'none'}}>
+      <p className={style.rog1}>{log1}</p>
     </div>
     </>
   )

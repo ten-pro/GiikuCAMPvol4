@@ -1,12 +1,12 @@
 import style from "../../styles/Debate/Title.module.css"
 
-interface Chaildtitle{
-  title:string;
-}
+type TitleProps = {
+  title: string;
+};
 
-
-const Title :React.FC<Chaildtitle> = ({title}) =>{
-  return(
+const Title :React.FC<TitleProps>= ({title}) =>{
+  
+  return (
     <>
       <p className={style.title}>{title}</p>
     </>

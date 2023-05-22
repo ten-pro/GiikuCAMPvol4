@@ -1,8 +1,8 @@
 import style from "../styles/Jazzi/Jazzi.module.css";
 import Title from "@/components/debate/title";
 import User1 from "@/components/debate/user1";
-import User2 from "@/components/debate/user2";
-import User3 from "@/components/debate/user3";
+import User2 from "@/components/debate/user3";
+import User3 from "@/components/debate/user2";
 import User4 from "@/components/debate/user4";
 import { useRouter } from "next/router";
 
