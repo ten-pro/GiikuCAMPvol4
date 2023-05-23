@@ -10,23 +10,32 @@ const inter = Inter({ subsets: ['latin'] })
 
 function Home() {
     const [title, setTitle] = useState('連携テスト');
-    const [name1, setName1] = useState('gpt1');
-    const [name2, setName2] = useState('gpt2');
-    const [name3, setName3] = useState('gpt3');
-    const [name4, setName4] = useState('gpt4');
-    const [img1, setImg1] = useState(1);
-    const [img2, setImg2] = useState(2);
-    const [img3, setImg3] = useState(3);
-    const [img4, setImg4] = useState(4);
-    const [character1, setCharacter1] = useState('頭でっかち');
-    const [character2, setCharacter2] = useState('力自慢');
-    const [character3, setCharacter3] = useState('ごうけつ');
-    const [character4, setCharacter4] = useState('理屈っぽい');
-    const [position1, setPosition1] = useState('肯定');
-    const [position2, setPosition2] = useState('肯定');
-    const [position3, setPosition3] = useState('否定');
-    const [position4, setPosition4] = useState('否定');
-
+    const [gptStates, setGptStates] = useState([
+        {
+          name: 'gpt1',
+          img: 1,
+          character: '頭でっかち',
+          position: '肯定',
+        },
+        {
+          name: 'gpt2',
+          img: 2,
+          character: '力自慢',
+          position: '肯定',
+        },
+        {
+          name: 'gpt3',
+          img: 3,
+          character: 'ごうけつ',
+          position: '否定',
+        },
+        {
+          name: 'gpt4',
+          img: 4,
+          character: '理屈っぽい',
+          position: '否定',
+        },
+      ]);
     const debateStart = async () => {
         try {
             const res = await axios.post(
@@ -83,18 +92,20 @@ function Home() {
             console.log(error);
         }
     };
-
+    const setGptState = (index: any, newState: any) => {
+        setGptStates(gptStates.map((state, i) => (i === index ? newState : state)));
+      };
 return (
 <>
     <HomeTitle />
     <div style={{display: "flex"}}>
-        <HomeGpt color="#ff0000" lCheck={false} pCheck={true} src="/HomeImage/gptLogo1.png" placeholder='Ada' position='1' loading='11' positive='111' negative='a' one='aa' all='aaa'/>
-        <HomeGpt color="#CC00FF" lCheck={true} pCheck={false} src="/HomeImage/gptLogo2.png" placeholder='Babbage' position='2' loading='22' positive='222' negative='b' one='bb' all='bbb'/>
+        <HomeGpt gptState={gptStates[0]} setGptState={(newState) => setGptState(0, newState)} color="#ff0000" lCheck={false} pCheck={true} src="/HomeImage/gptLogo1.png" placeholder='Ada' position='1' loading='11' positive='111' negative='a' one='aa' all='aaa'/>
+        <HomeGpt gptState={gptStates[1]} setGptState={(newState) => setGptState(1, newState)} color="#CC00FF" lCheck={true} pCheck={false} src="/HomeImage/gptLogo2.png" placeholder='Babbage' position='2' loading='22' positive='222' negative='b' one='bb' all='bbb'/>
     </div>
     <div style={{display: "flex"}}>
         <div style={{display: "flex"}}>
-            <HomeGpt color="#33E9E9" lCheck={false} pCheck={true} src="/HomeImage/gptLogo3.png" placeholder='Curie' position='3' loading='33' positive='333' negative='c' one='cc' all='ccc'/>
-            <HomeGpt color="#FFD56A" lCheck={true} pCheck={false} src="/HomeImage/gptLogo4.png" placeholder='Davinci' position='4' loading='44' positive='444' negative='d' one='dd' all='ddd'/>
+            <HomeGpt gptState={gptStates[2]} setGptState={(newState) => setGptState(2, newState)} color="#33E9E9" lCheck={false} pCheck={true} src="/HomeImage/gptLogo3.png" placeholder='Curie' position='3' loading='33' positive='333' negative='c' one='cc' all='ccc'/>
+            <HomeGpt gptState={gptStates[3]} setGptState={(newState) => setGptState(3, newState)} color="#FFD56A" lCheck={true} pCheck={false} src="/HomeImage/gptLogo4.png" placeholder='Davinci' position='4' loading='44' positive='444' negative='d' one='dd' all='ddd'/>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }} className={Styles.buttonArea}>
             <HomeButton text="議事録を開く"/>
