@@ -25,6 +25,11 @@ interface HomeGptProps {
     lCheck: boolean;
     initialCharacter: string;
     onCharacterChange: any;
+    onTitleChange: (newTitle: string) => void; 
+    indexName: number;
+    indexSelect:number;
+    onInputChange: (index: number, newValue: string) => void;
+    onSelectChange: (index: number, newValue: string) => void;
   }
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,7 +40,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ indexSelect,onSelectChange,indexName, onInputChange, initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -44,6 +49,9 @@ function HomeGpt({ initialCharacter, onCharacterChange, color, src, placeholder,
         0 0 10px ${color}
         `,
       };
+      const handleChange = (event:any) => {
+        onInputChange(indexName, event.target.value);
+    }
       const [selectedCharacter2, setSelectedCharacter2] = useState(initialCharacter);
       const [options, setOptions] = useState<{value: number, label: string}[]>([]);
       const [isClearable, setIsClearable] = useState(true);
@@ -128,11 +136,11 @@ return (
             </div>
         </div>
         <div className={Styles.right}>
-            <input type="text" className={Styles.gptName1} placeholder={placeholder} style={style}/>
+            <input type="text" className={Styles.gptName1} placeholder={placeholder} style={style} onChange={handleChange}/>
             <div className={Styles.gptSetting1} style={style}>
                 <div className={Styles.gender}>
                     <div className={Styles.genderTitle}>性別：</div>
-                    <select className={Styles.genderSelect}>
+                    <select className={Styles.genderSelect} onChange={(e) => onSelectChange(indexSelect, e.target.value)}>
                         <option value="null">選択してください</option>
                         <option value="boy">男性</option>
                         <option value="girl">女性</option>
