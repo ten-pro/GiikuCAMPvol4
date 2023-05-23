@@ -9,6 +9,19 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 function Home() {
+    const [childValues, setChildValues] = useState({
+        child1: '',
+        child2: '',
+        child3: '',
+        child4: '',
+        // その他の子コンポーネントの初期値
+      });
+      const handleChildChange = (childName: any, newValue: any) => {
+        setChildValues(prevValues => ({
+          ...prevValues,
+          [childName]: newValue,
+        }));
+      };
     const [title, setTitle] = useState('連携テスト');
     const [gptStates, setGptStates] = useState([
         {

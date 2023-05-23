@@ -23,6 +23,8 @@ interface HomeGptProps {
     all: string;
     pCheck: boolean;
     lCheck: boolean;
+    initialCharacter: string;
+    onCharacterChange: any;
   }
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,7 +35,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -42,7 +44,7 @@ function HomeGpt({ color, src, placeholder, position, loading , positive, negati
         0 0 10px ${color}
         `,
       };
-      
+      const [selectedCharacter2, setSelectedCharacter2] = useState(initialCharacter);
       const [options, setOptions] = useState<{value: number, label: string}[]>([]);
       const [isClearable, setIsClearable] = useState(true);
       const [userId, setUserId] = useState<number | null>(null);
@@ -51,7 +53,16 @@ const [isSearchable, setIsSearchable] = useState(true);
       const [cLoading, setCLoading] = useState(lCheck ? one : all);
       const [isMounted, setIsMounted] = useState(false);
       const [id, setId] = useState(0); 
+      const [selectedCharacter, setSelectedCharacter] = useState('');
       const [idToUse, setIdToUse] = useState(0);
+      const handleCharacterChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        setSelectedCharacter(newValue);
+        onCharacterChange(newValue);  // 親への更新通知
+      };
+      const handleCharacterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedCharacter(e.target.value);
+    };
 
       const gptList = async (idToUse: number) => {
         try {
@@ -137,7 +148,7 @@ return (
                 </div>
                 <div className={Styles.character}>
                     <div className={Styles.characterTitle}>性格：</div>
-                    <input type="text" className={Styles.characterInput} placeholder='新しく性格を作る'/>
+                    <input type="text" className={Styles.characterInput} placeholder='新しく性格を作る' value={selectedCharacter} onChange={handleCharacterChange}/>
                 </div>
                 
                 <div className={Styles.loading}>
@@ -160,8 +171,11 @@ return (
                         options={options}
                         onChange={(selectedOption) => {
                             if (selectedOption) {
-                              const { value } = selectedOption as { value: number, label: string };
+                              const { value, label } = selectedOption as { value: number, label: string };
                               setId(value);
+                              setSelectedCharacter(label);
+                            } else {
+                              setSelectedCharacter('');
                             }
                           }}
                       />
