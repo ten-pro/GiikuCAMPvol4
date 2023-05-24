@@ -29,6 +29,8 @@ interface HomeGptProps {
     indexName: number;
     indexSelect:number;
     indexRadio: number;
+    indexCharacter: number;
+    onCharacterInputChange:(index: number, newValue: string) => void;
     onRadioChange: (index: number, newValue: string) => void;
     onInputChange: (index: number, newValue: string) => void;
     onSelectChange: (index: number, newValue: string) => void;
@@ -42,7 +44,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -160,7 +162,7 @@ return (
                 </div>
                 <div className={Styles.character}>
                     <div className={Styles.characterTitle}>性格：</div>
-                    <input type="text" className={Styles.characterInput} placeholder='新しく性格を作る' value={selectedCharacter} onChange={handleCharacterChange}/>
+                    <input type="text" className={Styles.characterInput} placeholder='新しく性格を作る' value={selectedCharacter} onChange={(e) => { handleCharacterChange(e); onCharacterInputChange(indexCharacter, e.target.value); }}/>
                 </div>
                 
                 <div className={Styles.loading}>
