@@ -6,6 +6,7 @@ import axios from 'axios'
 interface HomeGptProps {
     color: string;
     src: string;
+    onImageChange:(index: number, newValue: string) => void;
     placeholder: string;
     position: string;
     loading: string;
@@ -32,7 +33,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ onImageChange, onCharacterInputChange,indexCharacter,onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -41,6 +42,7 @@ function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadi
         0 0 10px ${color}
         `,
       };
+      
       const handleChange = (event:any) => {
         onInputChange(indexName, event.target.value);
     }
@@ -142,7 +144,7 @@ return (
         <div className={Styles.left}>
             <img src={src} className={Styles.logo1}/>
             <div className={Styles.changeDiv}>
-                <button className={Styles.change1}>画像を変更<img src='/HomeImage/arrow.png' className={Styles.changeIcon}/></button>
+                <button className={Styles.change1} onClick={() => onImageChange()}>画像を変更<img src='/HomeImage/arrow.png' className={Styles.changeIcon}/></button>
             </div>
         </div>
         <div className={Styles.right}>
