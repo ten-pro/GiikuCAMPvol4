@@ -28,6 +28,8 @@ interface HomeGptProps {
     onTitleChange: (newTitle: string) => void; 
     indexName: number;
     indexSelect:number;
+    indexRadio: number;
+    onRadioChange: (index: number, newValue: string) => void;
     onInputChange: (index: number, newValue: string) => void;
     onSelectChange: (index: number, newValue: string) => void;
   }
@@ -40,7 +42,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ indexSelect,onSelectChange,indexName, onInputChange, initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -149,9 +151,11 @@ return (
                 </div>
                 <div className={Styles.position}>
                     <div className={Styles.positionTitle}>立場：</div>
-                    <input type="radio" name={position} value='positive' id={positive} className={Styles.positionRadio1} checked={cPosition === positive} onChange={() => setCPosition(positive)}/>
+                    <input name={`group${indexRadio}`} onChange={(e) => { setCPosition(positive); onRadioChange(indexRadio, e.target.value); }} type="radio" value='positive' id={positive} className={Styles.positionRadio1} checked={cPosition === positive}/>
+
                     <label htmlFor={positive} className={Styles.positiveLabel} >肯定</label>
-                    <input type="radio" name={position} value='negative' id={negative} className={Styles.positionRadio2} checked={cPosition === negative} onChange={() => setCPosition(negative)}/>
+                    <input type="radio" name={`group${indexRadio}`} value='negative' id={negative} className={Styles.positionRadio2} checked={cPosition === negative} onChange={(e) => { setCPosition(negative); onRadioChange(indexRadio, e.target.value); }}/>
+
                     <label htmlFor={negative} className={Styles.negativeLabel} >否定</label>
                 </div>
                 <div className={Styles.character}>
