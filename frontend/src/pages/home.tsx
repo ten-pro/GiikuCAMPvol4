@@ -4,9 +4,6 @@ import HomeButton from '@/components/Home/HomeButton'
 import Styles from '@/styles/Home/Home.module.scss'
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 function Home() {
     const [characterValues, setCharacterValues] = useState(["", "", "", ""]);
@@ -34,20 +31,6 @@ const handleRadioChange = (index: any, newValue:any) => {
         newSelectValues[index] = newValue;
         setSelectValues(newSelectValues);
     }    
-    const [childValues, setChildValues] = useState({
-        child1: '',
-        child2: '',
-        child3: '',
-        child4: '',
-        // その他の子コンポーネントの初期値
-      });
-      
-      const handleChildChange = (childName: any, newValue: any) => {
-        setChildValues(prevValues => ({
-          ...prevValues,
-          [childName]: newValue,
-        }));
-      };
     const [title, setTitle] = useState('');
     const handleTitleChange = (newTitle: string) => {
         setTitle(newTitle);

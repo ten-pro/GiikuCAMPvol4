@@ -1,6 +1,5 @@
 import Styles from '@/styles/Home/Home.module.scss'
 import React, { useState, useEffect } from 'react'
-import { Inter } from 'next/font/google'
 import Select from 'react-select';
 import axios from 'axios'
 
@@ -16,8 +15,6 @@ interface HomeGptProps {
     all: string;
     pCheck: boolean;
     lCheck: boolean;
-    initialCharacter: string;
-    onCharacterChange: any;
     onTitleChange: (newTitle: string) => void; 
     indexName: number;
     indexSelect:number;
@@ -28,8 +25,6 @@ interface HomeGptProps {
     onInputChange: (index: number, newValue: string) => void;
     onSelectChange: (index: number, newValue: string) => void;
   }
-const inter = Inter({ subsets: ['latin'] })
-
 
 const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
     <label style={{ marginRight: '1em' }}>
@@ -37,7 +32,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, initialCharacter, onCharacterChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -49,7 +44,6 @@ function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadi
       const handleChange = (event:any) => {
         onInputChange(indexName, event.target.value);
     }
-      const [selectedCharacter2, setSelectedCharacter2] = useState(initialCharacter);
       const [options, setOptions] = useState<{value: number, label: string}[]>([]);
       const [isClearable, setIsClearable] = useState(true);
       const [userId, setUserId] = useState<number | null>(null);
@@ -63,7 +57,6 @@ const [isSearchable, setIsSearchable] = useState(true);
       const handleCharacterChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value;
         setSelectedCharacter(newValue);
-        onCharacterChange(newValue);  // 親への更新通知
       };
       const handleCharacterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedCharacter(e.target.value);
