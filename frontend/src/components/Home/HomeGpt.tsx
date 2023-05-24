@@ -5,13 +5,6 @@ import Select from 'react-select';
 import axios from 'axios'
 
 interface HomeGptProps {
-    gptState: {
-        name: string;
-        img: number;
-        character: string;
-    position: string;
-    };
-    setGptState: (newState: any) => void;
     color: string;
     src: string;
     placeholder: string;
