@@ -44,6 +44,26 @@ function HomeGpt({ onCharacterInputChange,indexCharacter,onRadioChange,indexRadi
       const handleChange = (event:any) => {
         onInputChange(indexName, event.target.value);
     }
+    const handleSelectChange = (selectedOption: any) => {
+        if (selectedOption) {
+            const { value, label } = selectedOption as { value: number, label: string };
+            setId(value);
+            setSelectedCharacter(label);
+            onCharacterInputChange(indexCharacter, label);  // 追加：label値を親コンポーネントの関数に渡す
+        } else {
+            setSelectedCharacter('');
+            onCharacterInputChange(indexCharacter, '');  // 追加：空文字を親コンポーネントの関数に渡す
+        }
+    };
+    
+
+    // Inputフィールドで値が変わった時の処理
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        setSelectedCharacter(newValue);
+        onCharacterInputChange(indexCharacter, newValue);  // 入力値を親コンポーネントの関数に渡す
+    };
+
       const [options, setOptions] = useState<{value: number, label: string}[]>([]);
       const [isClearable, setIsClearable] = useState(true);
       const [userId, setUserId] = useState<number | null>(null);
@@ -140,17 +160,14 @@ return (
                 <div className={Styles.position}>
                     <div className={Styles.positionTitle}>立場：</div>
                     <input name={`group${indexRadio}`} onChange={(e) => { setCPosition(positive); onRadioChange(indexRadio, e.target.value); }} type="radio" value='positive' id={positive} className={Styles.positionRadio1} checked={cPosition === positive}/>
-
                     <label htmlFor={positive} className={Styles.positiveLabel} >肯定</label>
                     <input type="radio" name={`group${indexRadio}`} value='negative' id={negative} className={Styles.positionRadio2} checked={cPosition === negative} onChange={(e) => { setCPosition(negative); onRadioChange(indexRadio, e.target.value); }}/>
-
                     <label htmlFor={negative} className={Styles.negativeLabel} >否定</label>
                 </div>
                 <div className={Styles.character}>
                     <div className={Styles.characterTitle}>性格：</div>
-                    <input type="text" className={Styles.characterInput} placeholder='新しく性格を作る' value={selectedCharacter} onChange={(e) => { handleCharacterChange(e); onCharacterInputChange(indexCharacter, e.target.value); }}/>
+                    <input type="text" className={Styles.characterInput} placeholder='新しく性格を作る' value={selectedCharacter} onChange={handleInputChange}/>
                 </div>
-                
                 <div className={Styles.loading}>
                     <div className={Styles.loadingTop}>
                         <div className={Styles.loadingTitle}>読み込み：</div>
@@ -161,36 +178,19 @@ return (
                     </div>
                     <div className={Styles.loadingBottom}>
                     {isMounted && (
-                      <Select
-                        className="basic-single"
-                        classNamePrefix="select"
-                        isClearable={isClearable}
-                        isSearchable={isSearchable}
-                        name="color"
-                        placeholder="既存の性格を選ぶ"
-                        options={options}
-                        onChange={(selectedOption) => {
-                            if (selectedOption) {
-                              const { value, label } = selectedOption as { value: number, label: string };
-                              setId(value);
-                              setSelectedCharacter(label);
-                            } else {
-                              setSelectedCharacter('');
-                            }
-                          }}
-                      />
-                    )}
-
-      <div
-        style={{
-          color: 'hsl(0, 0%, 40%)',
-          display: 'inline-block',
-          fontSize: 12,
-          fontStyle: 'italic',
-          marginTop: '1em',
-        }}
-      >
-      </div>
+                    <Select className="basic-single" classNamePrefix="select" isClearable={isClearable}
+                        isSearchable={isSearchable} name="color" placeholder="既存の性格を選ぶ" options={options}
+                        onChange={handleSelectChange} 
+                        />
+                        )}
+                        <div style={{
+                        color: 'hsl(0, 0%, 40%)',
+                        display: 'inline-block',
+                        fontSize: 12,
+                        fontStyle: 'italic',
+                        marginTop: '1em',
+                        }}>
+                        </div>
                     </div>
                 </div>
             </div>

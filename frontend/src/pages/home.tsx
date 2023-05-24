@@ -6,12 +6,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function Home() {
-    const [characterValues, setCharacterValues] = useState(["", "", "", ""]);
-    const handleCharacterInputChange = (index:any, newValue: any) => {
-        const newTitleValues = [...characterValues];
-        newTitleValues[index] = newValue;
-        setCharacterValues(newTitleValues);
-    }
+const [characterValues, setCharacterValues] = useState(["", "", "", ""]);
+const handleCharacterInputChange = (index: number, newValue: string) => {
+    const newValues = [...characterValues];
+    newValues[index] = newValue;
+    setCharacterValues(newValues);
+}
+
     
     const [radioValues, setRadioValues] = useState(["", "", "", ""]);
 const handleRadioChange = (index: any, newValue:any) => {
