@@ -153,17 +153,17 @@ return (
                 <div className={Styles.gender}>
                     <div className={Styles.genderTitle}>性別：</div>
                     <select className={Styles.genderSelect} onChange={(e) => onSelectChange(indexSelect, e.target.value)}>
-                        <option value="null">選択してください</option>
-                        <option value="boy">男性</option>
-                        <option value="girl">女性</option>
-                        <option value="another">その他</option>
+                        <option value="noSelected">選択してください</option>
+                        <option value="男性">男性</option>
+                        <option value="女性">女性</option>
+                        <option value="その他">その他</option>
                     </select>
                 </div>
                 <div className={Styles.position}>
                     <div className={Styles.positionTitle}>立場：</div>
-                    <input name={`group${indexRadio}`} onChange={(e) => { setCPosition(positive); onRadioChange(indexRadio, e.target.value); }} type="radio" value='positive' id={positive} className={Styles.positionRadio1} checked={cPosition === positive}/>
+                    <input name={`group${indexRadio}`} onChange={(e) => { setCPosition(positive); onRadioChange(indexRadio, e.target.value); }} type="radio" value='肯定' id={positive} className={Styles.positionRadio1} checked={cPosition === positive}/>
                     <label htmlFor={positive} className={Styles.positiveLabel} >肯定</label>
-                    <input type="radio" name={`group${indexRadio}`} value='negative' id={negative} className={Styles.positionRadio2} checked={cPosition === negative} onChange={(e) => { setCPosition(negative); onRadioChange(indexRadio, e.target.value); }}/>
+                    <input type="radio" name={`group${indexRadio}`} value='否定' id={negative} className={Styles.positionRadio2} checked={cPosition === negative} onChange={(e) => { setCPosition(negative); onRadioChange(indexRadio, e.target.value); }}/>
                     <label htmlFor={negative} className={Styles.negativeLabel} >否定</label>
                 </div>
                 <div className={Styles.character}>
