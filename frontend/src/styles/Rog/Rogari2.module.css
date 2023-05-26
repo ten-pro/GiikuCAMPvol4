@@ -15,14 +15,14 @@
   position: relative;
   display: inline-block;
   min-width: 100px;
-  max-width: 60%;
-  max-height: 40%;
+  max-width: 61.5%;
+  max-height: 80%;
   font-size: 1.5vw;
   background: rgba(255, 255, 255, 0.6);
   border: 0.3vw  solid #CC00FF;
   border-radius: 1vw;
   margin-top: 1vw;
-  margin-left: 13vw;
+  margin-left: 12vw;
 }
 
 .fukidasi_area:before {

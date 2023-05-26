@@ -29,7 +29,7 @@ const User3: React.FC<User3Props> = ({ chara3 }) => {
       />
       <p className={style.user3}>{chara3.gpt_name}</p>
       <p className={style.seikaku3}>{chara3.gpt_character}</p>
-      <p className={style.po}>{chara3.position}</p>
+      {/* <p className={style.po}>{chara3.position}</p> */}
     </>
   );
 };

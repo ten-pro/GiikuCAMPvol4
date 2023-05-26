@@ -10,11 +10,11 @@ const Log4 :React.FC<LogProps>= ({log4}) =>{
   const hyouzi4 = useState<boolean>(true);
   
   return (
-    <>
+    <div className={style.rog_area}>
       <div className={style.rog4_area} style={{display:hyouzi4?'block':'none'}}>
       <p className={style.rog4}>{log4}</p>
     </div>
-    </>
+    </div>
   )
 }
 export default Log4;

@@ -29,7 +29,7 @@ const User2: React.FC<User2Props> = ({ chara2 }) => {
       />
       <p className={style.user2}>{chara2.gpt_name}</p>
       <p className={style.seikaku2}>{chara2.gpt_character}</p>
-      <p className={style.po}>{chara2.position}</p>
+      {/* <p className={style.po}>{chara2.position}</p> */}
 
     </>
   );
