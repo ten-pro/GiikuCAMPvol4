@@ -59,12 +59,13 @@ const handleRadioChange = (index: any, newValue:any) => {
       }
       const debateStart = async () => {
         const positiveCount = radioValues.filter(value => value === '肯定').length;
-    const negativeCount = radioValues.filter(value => value === '否定').length;
-    if (positiveCount !== 2 || negativeCount !== 2) {
-        // If the radio values are not balanced, show the error message
-        setShowError(true);
-        return;
-      }
+        const negativeCount = radioValues.filter(value => value === '否定').length;
+      
+        if (positiveCount !== 2 || negativeCount !== 2) {
+          // If the radio values are not balanced, show an alert
+          window.alert("肯定と否定を2：2にしてください");
+          return;
+        }
   
       setShowError(false); 
         const payload = {
@@ -150,7 +151,6 @@ return (
         <div style={{ display: "flex", flexDirection: "column" }} className={Styles.buttonArea}>
             <HomeButton text="議事録を開く" functionButton={location}/>
             <HomeButton text="スタート" functionButton={debateStart}/>
-            {showError && <div className={Styles.error}>肯定と否定を2：2にしてください</div>}
         </div>
     </div>
 </>
