@@ -84,3 +84,27 @@ if (isset($_POST['get_debate_info']) == true) {
 $json_array = json_encode($data);
 
 print $json_array;
+// const create_account = async () => {
+//     try {
+//       const response = await axios.post(
+//         'http://mp-class.chips.jp/matiawase/main.php',
+//         'https://mp-class.chips.jp/matiawase/main.php',
+//         {
+//           create_user: '',
+//           name: name,
+// @@ -27,15 +27,12 @@ function Card() {
+//           },
+//         }
+//       );
+//       // console.log(response.data)
+//       if(response.data.create_acount === true) {
+//         localStorage.setItem('user_id', response.data.user_information.user_id)
+//         // console.log(localStorage.getItem('user_id'))
+//         seterror(false)
+//         location.href = '/map'
+//       } else {
+//         seterror(true)
+//         // console.log(response.data)
+//       }
+//     } catch(error) {
+//       console.log(error)
