@@ -22,9 +22,9 @@ const Logbtn = (props: RogbtnProps)  =>{
 
     const queryParams = {
       log1,
-      log2,
       log3,
       log4,
+      log2,
       log5,
       log6,
       log7,

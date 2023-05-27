@@ -10,7 +10,7 @@ import Rog3 from "@/components/debate/log3";
 import Rog2 from "@/components/debate/log2";
 import Rog4 from "@/components/debate/log4";
 import Finishbtn from "@/components/debate_finish/finishbtn";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
@@ -46,14 +46,14 @@ const Debate = () =>{
   const[chara4,setChara4] = useState<Character | undefined>(undefined);
   const[seikaku,setSeikaku] = useState<string>('');
 
-  const [kou1,setKou1] = useState<string>('aaaaaaa'); //１肯定の発表
-  const [hi2,setHi2] = useState<string>('bbbbbbbb'); //２否定の反対尋問
-  const [hi3,setHi3] = useState<string>('ccccccc'); //３否定の発表
-  const [kou4,setKou4] = useState<string>('dddddd'); //４肯定の反対尋問
-  const [kou5,setKou5] = useState<string>('eeeeeee'); //５肯定の反駁
-  const [hi6,setHi6] = useState<string>('fffffff'); //６否定の反駁
-  const [kou7,setKou7] = useState<string>('dddddddd'); //７肯定の最終弁論
-  const [hi8,setHi8] = useState<string>('ffffffff'); //８否定の最終弁論
+  const [kou1,setKou1] = useState<string>(''); //１肯定の発表
+  const [hi2,setHi2] = useState<string>(''); //２否定の反対尋問
+  const [hi3,setHi3] = useState<string>(''); //３否定の発表
+  const [kou4,setKou4] = useState<string>(''); //４肯定の反対尋問
+  const [kou5,setKou5] = useState<string>(''); //５肯定の反駁
+  const [hi6,setHi6] = useState<string>(''); //６否定の反駁
+  const [kou7,setKou7] = useState<string>(''); //７肯定の最終弁論
+  const [hi8,setHi8] = useState<string>(''); //８否定の最終弁論
 
   //表示のありなしを判断する場所
   const [isRog1Visible, setIsRog1Visible] = useState<boolean>(false);
@@ -176,6 +176,7 @@ const Debate = () =>{
     
       } catch (error) {
         console.error('ChatGPT APIの呼び出し中にエラーが発生しました:', error);
+        setIsRog1Visible(false);
       }
     };
         // ↓GPTの動き３回目の発表
@@ -191,7 +192,7 @@ const Debate = () =>{
             const body = {
               "model": "gpt-3.5-turbo",
               "messages": [
-                { "role": "system", "content": `あなたの名前はかい。あなたの性格はヤンキー。` },
+                { "role": "system", "content": `あなたの名前はかい。ヤンキーな性格で答えてほしい` },
                 { "role": "user", "content": `否定の立場で朝のコーヒーについて３文で簡潔に立論してほしい`}
               ],
                 "max_tokens": 130  // 返答の最大トークン数を指定
@@ -209,6 +210,7 @@ const Debate = () =>{
 
           } catch (error) {
             console.error('ChatGPT APIの呼び出し中にエラーが発生しました:', error);
+            setIsRog2Visible(false);
           }
         };
             // ↓GPTの動き４回目の反対尋問
@@ -224,9 +226,9 @@ const Debate = () =>{
         const body = {
           "model": "gpt-3.5-turbo",
           "messages": [
-            { "role": "system", "content": `あなたの名前はまい。あなたの性格はオタク気質。` },
+            { "role": "system", "content": `あなたの名前はまい。オタク気質な性格で答えてほしい` },
             { "role": "assistant", "content": hi3 },
-            { "role": "user", "content": `肯定の立場で３文で簡潔に反論をしてほしい` },
+            { "role": "user", "content": `肯定の立場で３文で反論をしてほしい` },
           ],
           "max_tokens": 130  // 返答の最大トークン数を指定
         };
@@ -240,6 +242,7 @@ const Debate = () =>{
         console.log("4回目OK！");
 
         await new Promise((resolve) => setTimeout(resolve, 5000));
+        setIsRog3Visible(false);
 
 
       } catch (error) {
@@ -259,7 +262,7 @@ const Debate = () =>{
             const body = {
               "model": "gpt-3.5-turbo",
               "messages": [
-                { "role": "system", "content": `あなたの名前はあい。あなたの性格はやんちゃ坊主。` },
+                { "role": "system", "content": `あなたの名前はあい。やんちゃ坊主な性格で答えてほしい` },
                 { "role": "assistant", "content": hi2 },
                 { "role": "user", "content": `肯定の立場で３文で反駁をしてほしい` },
               ],
@@ -279,6 +282,7 @@ const Debate = () =>{
 
           } catch (error) {
             console.error('ChatGPT APIの呼び出し中にエラーが発生しました:', error);
+            setIsRog4Visible(false);
           }
         };
             // ↓GPTの動き６回目の反駁
@@ -295,9 +299,9 @@ const Debate = () =>{
           "model": "gpt-3.5-turbo",
           "messages": [
             // { "role": "system", "content": `あなたの性格は${chara3?.gpt_character}。` },
-            { "role": "system", "content": `あなたの名前はかい。あなたの性格はヤンキー。` },
+            { "role": "system", "content": `あなたの名前はかい。ヤンキーな性格で答えてほしい` },
             { "role": "assistant", "content": kou4 },
-            { "role": "user", "content": `反対の立場で３文で反論をしてほしい` },
+            { "role": "user", "content": `反対の立場で３文で反対をしてほしい` },
           ],
           "max_tokens": 130  // 返答の最大トークン数を指定
         };
@@ -314,6 +318,7 @@ const Debate = () =>{
 
       } catch (error) {
         console.error('ChatGPT APIの呼び出し中にエラーが発生しました:', error);
+        setIsRog5Visible(false);
       }
     };
 
@@ -331,10 +336,10 @@ const Debate = () =>{
           "model": "gpt-3.5-turbo",
           "messages": [
             // { "role": "system", "content": `あなたの性格は${chara3?.gpt_character}。` },
-            { "role": "system", "content": `あなたの名前はかい。あなたの性格はヤンキー。` },
+            { "role": "system", "content": `あなたの名前はかい。ヤンキーな性格で答えてほしい` },
             { "role": "assistant", "content": kou1 },
             { "role": "assistant", "content": kou5 },
-            { "role": "user", "content": `肯定の立場で３文で最終弁論をしてほしい` },
+            { "role": "user", "content": `肯定の立場で３文でまとめてほしい` },
           ],
           "max_tokens": 130  // 返答の最大トークン数を指定
         };
@@ -351,6 +356,7 @@ const Debate = () =>{
 
       } catch (error) {
         console.error('ChatGPT APIの呼び出し中にエラーが発生しました:', error);
+        setIsRog6Visible(false);
       }
     };
 
@@ -368,10 +374,10 @@ const Debate = () =>{
                 "model": "gpt-3.5-turbo",
                 "messages": [
                   // { "role": "system", "content": `あなたの性格は${chara3?.gpt_character}。` },
-                  { "role": "system", "content": `あなたの名前はかい。あなたの性格はヤンキー。` },
+                  { "role": "system", "content": `あなたの名前はかい。オタク気質な性格で答えてほしい` },
                   { "role": "assistant", "content": hi3},
                   { "role": "assistant", "content": hi6 },
-                  { "role": "user", "content": `反対の立場で３文で最終弁論をしてほしい` },
+                  { "role": "user", "content": `反対の立場で３文でまとめてほしい` },
                 ],
                 "max_tokens": 130  // 返答の最大トークン数を指定
               };
@@ -388,6 +394,7 @@ const Debate = () =>{
       
             } catch (error) {
               console.error('ChatGPT APIの呼び出し中にエラーが発生しました:', error);
+              setIsRog7Visible(false);
             }
           };
 
@@ -414,6 +421,7 @@ const Debate = () =>{
                 await messages[i]();
               }
 
+              setIsRog8Visible(false);
               setFinishbtn(true);
               
             };
@@ -449,27 +457,36 @@ const Debate = () =>{
     
       <div>
       {isRog1Visible && <Rog1 log1={kou1} />}
-      {isRog2Visible &&<Rog2 log2={hi2} />}
-      {isRog4Visible &&<Rog4 log4={kou4} />}
-      {isRog3Visible &&<Rog3 log3={hi3} />}
+      {isRog2Visible &&<Rog3 log3={hi2} />}
+      {isRog3Visible &&<Rog4 log4={hi3} />}
+      {isRog4Visible &&<Rog2 log2={kou4} />}
       
       {isRog5Visible &&<Rog1 log1={kou5} />}
-      {isRog6Visible &&<Rog2 log2={hi6} />}
-      {isRog7Visible &&<Rog3 log3={kou7} />}
+      {isRog6Visible &&<Rog3 log3={hi6} />}
+      {isRog7Visible &&<Rog2 log2={kou7} />}
       {isRog8Visible &&<Rog4 log4={hi8} />}
 
     </div>
 
-    <div onClick={pushbtn}>
+    <div onClick={pushbtn} className={style.push_area}>
     <Rogbtn log1={kou1}
-            log2={hi2}
-            log3={hi3}
-            log4={kou4}
+            log3={hi2}
+            log4={hi3}
+            log2={kou4}
             log5={kou5}
             log6={hi6}
             log7={kou7}
             log8={hi8}/>
     </div>
+
+    {isRog1Visible && <p className={style.mozi}>立論</p>}
+    {isRog2Visible && <p className={style.mozi}>反対尋問</p>}
+    {isRog3Visible && <p className={style.mozi}>立論</p>}
+    {isRog4Visible && <p className={style.mozi}>反対尋問</p>}
+    {isRog5Visible && <p className={style.mozi}>反駁</p>}
+    {isRog6Visible && <p className={style.mozi}>反駁</p>}
+    {isRog7Visible && <p className={style.mozi}>最終弁論</p>}
+    {isRog8Visible && <p className={style.mozi}>最終弁論</p>}
     
 
     {finishbtn &&<Finishbtn log1={kou1}

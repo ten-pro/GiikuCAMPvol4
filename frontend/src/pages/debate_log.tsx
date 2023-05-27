@@ -39,11 +39,11 @@ const Debate_log :React.FC = () =>{
 
   //linkを使用してデータを取得
   const router = useRouter();
-  const { log1, log2, log3, log4, log5, log6, log7, log8 } = router.query;
+  const { log1, log3, log4, log2, log5, log6, log7, log8 } = router.query;
   const Log1 = Array.isArray(log1) ? decodeURIComponent(log1[0]) : decodeURIComponent(log1);
-  const Log2 = Array.isArray(log2) ? decodeURIComponent(log2[0]) : decodeURIComponent(log2);
   const Log3 = Array.isArray(log3) ? decodeURIComponent(log3[0]) : decodeURIComponent(log3);
   const Log4 = Array.isArray(log4) ? decodeURIComponent(log4[0]) : decodeURIComponent(log4);
+  const Log2 = Array.isArray(log2) ? decodeURIComponent(log2[0]) : decodeURIComponent(log2);
   const Log5 = Array.isArray(log5) ? decodeURIComponent(log5[0]) : decodeURIComponent(log5);
   const Log6 = Array.isArray(log6) ? decodeURIComponent(log6[0]) : decodeURIComponent(log6);
   const Log7 = Array.isArray(log7) ? decodeURIComponent(log7[0]) : decodeURIComponent(log7);
@@ -119,12 +119,12 @@ const Debate_log :React.FC = () =>{
     
       <div className={style.hyouzi_area}>
       {Log1 !== undefined && <Rogari1 log1={Log1} />}
-      {Log2 !== undefined && <Rogari2 log2={Log2} />}
       {Log3 !== undefined && <Rogari3 log3={Log3} />}
       {Log4 !== undefined && <Rogari4 log4={Log4} />}
+      {Log2 !== undefined && <Rogari2 log2={Log2} />}
       {Log5 !== undefined && <Rogari1 log1={Log5} />}
-      {Log6 !== undefined && <Rogari2 log2={Log6} />}
-      {Log7 !== undefined && <Rogari3 log3={Log7} />}
+      {Log6 !== undefined && <Rogari3 log3={Log6} />}
+      {Log7 !== undefined && <Rogari2 log2={Log7} />}
       {Log8 !== undefined && <Rogari4 log4={Log8} />}
       </div>
       <Tozirubtn />

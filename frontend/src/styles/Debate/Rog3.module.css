@@ -1,9 +1,9 @@
-.rog_area{
+/* .rog_area{
   display: flex;
 }
 .rog3_area {
-  grid-column:2; /* 列の範囲を指定 */
-  grid-row: 2 / span 3; /* 行を指定 */
+  grid-column:2; 
+  grid-row: 2 / span 3; 
   position: relative;
   display: inline-block;
   min-width: 120px;
@@ -24,6 +24,40 @@
   left: -9.5%;
   border: 3vw solid transparent;
   border-right: 2.8vw solid #00A8A8;
+}
+
+.rog3 {
+  margin: 0;
+  padding: 2vw;
+  max-width: 100%;
+} */
+
+.rog_area{
+  display: flex;
+}
+.rog3_area {
+  grid-column:2; /* 列の範囲を指定 */
+  grid-row: 2 / span 3; /* 行を指定 */
+  position: relative;
+  display: inline-block;
+  min-width: 120px;
+  max-width: 90%;
+  max-height: 70%;
+  font-size: 2.7vw;
+  background: rgba(255, 255, 255, 0.6);
+  border: 0.5vw  solid #CC00FF;
+  border-radius: 1vw;
+  margin-top: 3vw;
+  margin-left: 2vw;
+}
+
+.rog3_area:before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 100.5%;
+  border:3vw solid transparent;
+  border-left: 2.8vw solid #CC00FF;
 }
 
 .rog3 {

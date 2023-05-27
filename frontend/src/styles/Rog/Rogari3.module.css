@@ -5,8 +5,8 @@
 .img3{
   width: 6.8vw;
   height: 6.8vw;
-  margin-top: 1.6vw;
-  margin-left: 2vw;
+  margin-top: 1.8vw;
+  margin-left: 3.5vw;
 }
 
 .fukidasi_area {
@@ -15,26 +15,26 @@
   position: relative;
   display: inline-block;
   min-width: 100px;
-  max-width: 61%;
+  max-width: 61.5%;
   max-height: 80%;
   font-size: 1.5vw;
   background: rgba(255, 255, 255, 0.6);
-  border: 0.3vw  solid #00A8A8;
+  border: 0.3vw  solid #CC00FF;
   border-radius: 1vw;
   margin-top: 1vw;
-  margin-left: 3.2vw;
+  margin-left: 12vw;
 }
 
 .fukidasi_area:before {
   content: "";
   position: absolute;
   top: 40%;
-  left: -5.2%;
-  border: 0.8vw solid transparent;
-  border-right: 1.3vw solid #00A8A8;
+  left: 100.5%;
+  border:0.8vw solid transparent;
+  border-left: 1.3vw solid #CC00FF;
 }
 
-.p3{
+.p3 {
   margin: 0;
   padding: 1vw;
   max-width: 100%;

@@ -5,14 +5,9 @@ import User2 from "@/components/debate/user3";
 import User3 from "@/components/debate/user2";
 import User4 from "@/components/debate/user4";
 import Rogari1 from "@/components/debate_rog/rogari1";
-import Tozirubtn from "@/components/debate_rog/tozirubtn";
 import Rogari2 from "@/components/debate_rog/rogari2";
 import Rogari3 from "@/components/debate_rog/rogari3";
 import Rogari4 from "@/components/debate_rog/rogari4";
-import Hozon1 from "@/components/result/hozon1";
-import Hozon2 from "@/components/result/hozon2";
-import Hozon3 from "@/components/result/hozon3";
-import Hozon4 from "@/components/result/hozon4";
 import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
 import axios from "axios";
@@ -96,70 +91,6 @@ const Result = () =>{
     }
   }, [])
 
-  // useEffect (async()=>{
-  //   try{
-    //   const create = {
-    //     "create_talk": "",
-    //     "debate_id":1,
-    //     "judgement":hantei,
-    //     "talks": [
-    //         {
-    //             "debate_id": 2,
-    //             "gpt_id": 1,
-    //             "talk": Log1,
-    //         },
-    //         {
-    //             "debate_id": 2,
-    //             "gpt_id": 3,
-    //             "talk": Log2
-    //         },
-    //         {
-    //           "debate_id": 2,
-    //           "gpt_id": 2,
-    //           "talk": Log3
-    //       },
-    //       {
-    //           "debate_id": 2,
-    //           "gpt_id": 4,
-    //           "talk": Log4
-    //       },
-    //       {
-    //         "debate_id": 2,
-    //         "gpt_id": 1,
-    //         "talk": Log5
-    //     },
-    //     {
-    //         "debate_id": 2,
-    //         "gpt_id": 3,
-    //         "talk": Log6
-    //     },
-    //     {
-    //       "debate_id": 2,
-    //       "gpt_id": 1,
-    //       "talk": Log7
-    //   },
-    //   {
-    //       "debate_id": 2,
-    //       "gpt_id": 4,
-    //       "talk": Log8
-    //   }
-    //     ]
-    // };
-  //     const res = await axios.post(
-  //         'https://mp-class.chips.jp/debate/Main.php',
-  //         JSON.stringify(create),
-  //         {
-  //             headers: {
-  //                 'Content-Type': 'multipart/form-data',
-  //             },
-  //         }
-  //     );
-  //     console.log(res);
-  // } catch(error) {
-  //     console.log(error);
-  // }
-
-  // })
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -253,14 +184,20 @@ const Result = () =>{
       <User2 chara3={chara3}/>
       <User3 chara2={chara2}/>
       <User4 chara4={chara4}/>
+      {hantei.includes("肯定") && (
+          <img src="../../../image/win.png" alt="" className={style.winkoutei}/>
+      )}
+      {hantei.includes("否定") && (
+        <img src="../../../image/win.png" alt="" className={style.winhitei}/>
+      )}
       <div className={style.hyouzi_area}>
       {Log1 !== undefined && <Rogari1 log1={Log1} />}
-      {Log2 !== undefined && <Rogari2 log2={Log2} />}
       {Log3 !== undefined && <Rogari3 log3={Log3} />}
       {Log4 !== undefined && <Rogari4 log4={Log4} />}
+      {Log2 !== undefined && <Rogari2 log2={Log2} />}
       {Log5 !== undefined && <Rogari1 log1={Log5} />}
-      {Log6 !== undefined && <Rogari2 log2={Log6} />}
-      {Log7 !== undefined && <Rogari3 log3={Log7} />}
+      {Log6 !== undefined && <Rogari3 log3={Log6} />}
+      {Log7 !== undefined && <Rogari2 log2={Log7} />}
       {Log8 !== undefined && <Rogari4 log4={Log8} />}
       </div>
       
