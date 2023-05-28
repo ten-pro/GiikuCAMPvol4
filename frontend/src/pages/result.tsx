@@ -97,7 +97,7 @@ const Result = () =>{
         const create = {
           "create_talk": "",
           "debate_id":1,
-          "judgement":hantei,
+          "judgement":Hantei,
           "talks": [
               {
                   "debate_id": 2,
@@ -131,7 +131,7 @@ const Result = () =>{
               },
               {
               "debate_id": 2,
-              "gpt_id": 1,
+              "gpt_id": 2,
               "talk": Log7
             },
             {
