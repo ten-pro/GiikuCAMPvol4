@@ -1,3 +1,4 @@
+
 .rogari_area{
   display: flex;
 }
@@ -5,36 +6,36 @@
 .img2{
   width: 6.8vw;
   height: 6.8vw;
-  margin-top: 1.8vw;
-  margin-left: 3.5vw;
+  margin-top: 1.6vw;
+  margin-left: 2vw;
 }
 
 .fukidasi_area {
-  grid-column:2; /* 列の範囲を指定 */
-  grid-row: 2 / span 3; /* 行を指定 */
+  grid-column:2; 
+  grid-row: 2 / span 3; 
   position: relative;
   display: inline-block;
   min-width: 100px;
-  max-width: 60%;
-  max-height: 40%;
+  max-width: 61%;
+  max-height: 80%;
   font-size: 1.5vw;
   background: rgba(255, 255, 255, 0.6);
-  border: 0.3vw  solid #CC00FF;
+  border: 0.3vw  solid #00A8A8;
   border-radius: 1vw;
   margin-top: 1vw;
-  margin-left: 13vw;
+  margin-left: 3.2vw;
 }
 
 .fukidasi_area:before {
   content: "";
   position: absolute;
   top: 40%;
-  left: 100.5%;
-  border:0.8vw solid transparent;
-  border-left: 1.3vw solid #CC00FF;
+  left: -5.2%;
+  border: 0.8vw solid transparent;
+  border-right: 1.3vw solid #00A8A8;
 }
 
-.p2 {
+.p2{
   margin: 0;
   padding: 1vw;
   max-width: 100%;

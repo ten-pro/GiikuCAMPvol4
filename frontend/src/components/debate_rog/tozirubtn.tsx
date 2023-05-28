@@ -6,8 +6,7 @@ const Tozirubtn = () =>{
   const router = useRouter();
 
   const handle = () =>{
-
-    router.push('/debate');
+    router.push('/debate1');
   }
 
   return(

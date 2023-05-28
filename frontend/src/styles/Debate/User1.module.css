@@ -27,3 +27,13 @@
   text-align: center;
   margin-top: 100%;
 }
+.po{
+  margin: 0;
+  grid-column:1; /* 列の範囲を指定 */
+  grid-row: 2; /* 行を指定 */
+  color: #FF0000;
+  height: 10%;
+  font-size: 1.8vw;
+  text-align: center;
+  margin-top: 120%;
+}

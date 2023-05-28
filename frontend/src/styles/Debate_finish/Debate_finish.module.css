@@ -4,6 +4,21 @@
   grid-template-columns: 15vw 70vw 15vw;
 }
 
+.hyouzi_area{
+  display: grid;
+  grid-column: 2;
+  grid-row: 2 / span 3;
+  border-radius: 1.5vw;
+  border: 0.4vw solid #00FF38;
+  min-width: 120px;
+  max-width: 95%;
+  max-height: 80%;
+  margin-top: 2vw;
+  margin-left: 2vw;
+  overflow: auto; /* スクロールバーを表示する */
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 .area1{
   display: grid;
   grid-column:1; 

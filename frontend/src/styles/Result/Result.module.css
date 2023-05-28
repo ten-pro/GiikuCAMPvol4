@@ -151,3 +151,23 @@
   font-size: 1.8vw;
   margin-top: 0.3vw;
 }
+
+.winkoutei{
+  width: 5vw;
+  height: 5vw;
+  display: grid;
+  grid-column: 1;
+  grid-row: 3;
+  margin-left: 18.5vw;
+  margin-top: 12vw;
+}
+
+.winhitei{
+  width: 5vw;
+  height: 5vw;
+  display: grid;
+  grid-column: 2;
+  grid-row: 3;
+  margin-left: 63vw;
+  margin-top: 11.5vw;
+}

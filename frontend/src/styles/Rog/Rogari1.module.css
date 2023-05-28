@@ -1,3 +1,4 @@
+
 .rogari_area{
   display: flex;
 }
@@ -10,19 +11,19 @@
 }
 
 .fukidasi_area {
-  grid-column:2; /* 列の範囲を指定 */
-  grid-row: 2 / span 3; /* 行を指定 */
+  grid-column:2; 
+  grid-row: 2 / span 3; 
   position: relative;
   display: inline-block;
   min-width: 100px;
-  max-width: 60%;
-  max-height: 40%;
+  max-width: 61%;
+  max-height: 80%;
   font-size: 1.5vw;
   background: rgba(255, 255, 255, 0.6);
   border: 0.3vw  solid #FF0000;
   border-radius: 1vw;
   margin-top: 1vw;
-  margin-left: 4vw;
+  margin-left: 3.2vw;
 }
 
 .fukidasi_area:before {
@@ -37,4 +38,5 @@
 .p1{
   margin: 0;
   padding: 1vw;
+  max-width: 100%;
 }

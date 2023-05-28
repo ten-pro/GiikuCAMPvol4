@@ -1,3 +1,6 @@
+.rog_area{
+  display: flex;
+}
 .rog1_area {
   grid-column:2; /* 列の範囲を指定 */
   grid-row: 2 / span 3; /* 行を指定 */
@@ -6,7 +9,7 @@
   min-width: 120px;
   max-width: 90%;
   max-height: 70%;
-  font-size: 3vw;
+  font-size: 2.7vw;
   background: rgba(255, 255, 255, 0.6);
   border: 0.5vw  solid #FF0000;
   border-radius: 1vw;
@@ -17,7 +20,7 @@
 .rog1_area:before {
   content: "";
   position: absolute;
-  top: 10%;
+  top: 20%;
   left: -9.5%;
   border: 3vw solid transparent;
   border-right: 2.8vw solid #FF0000;
