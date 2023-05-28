@@ -10,7 +10,7 @@ require_once './UserDAO.php';
 require_once './GptDAO.php';
 require_once './DebateDAO.php';
 
-$data = 'noapi';
+$data = '引数が存在しません';
 
 //login_userの引数がある時の処理
 if (isset($_POST['login_user']) == true) {
@@ -35,7 +35,7 @@ if (isset($json_data['create_gpt']) && !empty($json_data['gpts'])) {
 //create_talkの引数がある時の処理
 if (isset($json_data['create_talk']) && !empty($json_data['talks'])) {
     $class = new Debate();
-    $data = $class->create_talk($json_data['talks']);
+    $data = $class->create_talk($json_data['debate_id'],$json_data['judgement'],$json_data['talks']);
 }
 
 //create_debateの引数がある時の処理
@@ -61,8 +61,50 @@ if (isset($_POST['search_gpt']) == true) {
     $data = $class->search_gpt($_POST['character']);
 }
 
+//get_minutesの引数がある時の処理
+if (isset($_POST['get_minutes']) == true) {
+    $class = new Debate();
+    $data = $class->get_minutes($_POST['user_id']);
+}
+
+//get_talklistの引数がある時の処理
+if (isset($_POST['get_talklist']) == true) {
+    $class = new Debate();
+    $data = $class->get_talklist($_POST['debate_id']);
+}
+
+//get_debate_infoの引数がある時の処理
+if (isset($_POST['get_debate_info']) == true) {
+    $class = new Debate();
+    $data = $class->get_debate_info($_POST['debate_id']);
+}
+
 
 //arrayの中身をJSON形式に変換している
 $json_array = json_encode($data);
 
 print $json_array;
+// const create_account = async () => {
+//     try {
+//       const response = await axios.post(
+//         'http://mp-class.chips.jp/matiawase/main.php',
+//         'https://mp-class.chips.jp/matiawase/main.php',
+//         {
+//           create_user: '',
+//           name: name,
+// @@ -27,15 +27,12 @@ function Card() {
+//           },
+//         }
+//       );
+//       // console.log(response.data)
+//       if(response.data.create_acount === true) {
+//         localStorage.setItem('user_id', response.data.user_information.user_id)
+//         // console.log(localStorage.getItem('user_id'))
+//         seterror(false)
+//         location.href = '/map'
+//       } else {
+//         seterror(true)
+//         // console.log(response.data)
+//       }
+//     } catch(error) {
+//       console.log(error)

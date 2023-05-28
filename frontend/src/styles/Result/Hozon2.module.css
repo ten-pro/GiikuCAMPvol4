@@ -9,6 +9,7 @@
   margin-top: 1.9vw;
   margin-left: 3vw;
   border-radius: 1vw;
+  cursor: pointer;
 }
 
 .p2{
@@ -33,6 +34,7 @@
   margin-left: 3vw;
   border-radius: 1vw;
   background-color: rgba(0, 255, 56, 0.7);
+  cursor: pointer;
 }
 
 .p{

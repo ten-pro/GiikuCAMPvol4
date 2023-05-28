@@ -4,6 +4,7 @@
   grid-row: 4; /* 行を指定 */
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .btn_area{
   justify-self: center;

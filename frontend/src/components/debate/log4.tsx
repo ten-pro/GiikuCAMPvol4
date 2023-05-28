@@ -7,7 +7,7 @@ const Log4 = () =>{
 
   return(
     <>
-    <div className={style.rog4_area} style={{display:hyouzi4?'none':'block'}}>
+    <div className={style.rog4_area} style={{display:hyouzi4?'block':'none'}}>
       <p className={style.rog4}>学費の無償化なしだよだよだよだよだよだよだよだよだよだよだよだよだよだよだよだよ</p>
     </div>
     </>

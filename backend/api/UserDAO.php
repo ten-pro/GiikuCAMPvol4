@@ -14,7 +14,7 @@ class Login
         try {
 
             if(empty($pass) || empty($mail))
-            return 'nodata';
+            return '引数が設定されていません';
 
             $pdo = $this->get_pdo();
 
@@ -27,7 +27,7 @@ class Login
 
             // ユーザーが存在しない場合はログイン失敗とする
             if (!$search) {
-                return array('login' => false, 'result' => 'mail mismatch');
+                return array('login' => false, 'result' => 'アカウントが存在しません');
             }
 
             foreach ($search as $row) {
@@ -35,7 +35,8 @@ class Login
                 if (password_verify($pass, $row['user_pass'])) {
                     // ユーザー情報を返す
                     $data = array(
-                        'login' => true
+                        'login' => true,
+                        'id' => $row['user_id']
                     );
 
                     return $data;
@@ -43,7 +44,7 @@ class Login
             }
 
             // 認証失敗時はログイン失敗とする
-            return array('login' => false, 'result' => 'password mismatch');
+            return array('login' => false, 'result' => 'パスワードが間違っています');
         } catch (PDOException $e) {
             return $e->getMessage();
         }
@@ -52,9 +53,9 @@ class Login
     function create_user($pass, $mail)
     {
         try {
-            
+
             if(empty($pass) || empty($mail))
-            return 'nodata';
+            return array('login' => false, 'result' => '引数が設定されていません');
 
             $pdo = $this->get_pdo();
 
@@ -77,7 +78,7 @@ class Login
                     'user_id' => $id
                 );
             } else {
-                $data = array("create_acount" => false, "result" => "duplication");
+                $data = array("create_acount" => false, "result" => "アカウントがすでに存在しています");
             }
         } catch (PDOException $e) {
             $data = $e->getMessage();
