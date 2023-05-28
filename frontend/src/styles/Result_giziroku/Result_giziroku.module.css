@@ -33,6 +33,7 @@
   height: 3.2vw;
   border-radius: 1vw;
   border: 0.3vw solid #83E1FF;
+  cursor: pointer;
 }
 
 .gizip{

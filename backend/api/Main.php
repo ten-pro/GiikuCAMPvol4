@@ -7,19 +7,76 @@ header('Content-Type: application/json; charset=UTF-8');
 
 //DAOの読み込み
 require_once './UserDAO.php';
+require_once './GptDAO.php';
+require_once './DebateDAO.php';
 
-//ログイン処理
+$data = '引数が存在しません';
 
 //login_userの引数がある時の処理
 if (isset($_POST['login_user']) == true) {
     $class = new Login();
-        $data = $class->login_user($_POST['mail'], $_POST['pass']);
+    $data = $class->login_user($_POST['mail'], $_POST['pass']);
 }
 
 //create_userの引数がある時の処理
 if (isset($_POST['create_user']) == true) {
     $class = new Login();
-        $data = $class->create_user($_POST['pass'], $_POST['mail']);
+    $data = $class->create_user($_POST['pass'], $_POST['mail']);
+}
+
+$json_data = json_decode(file_get_contents('php://input'), true);
+
+//create_gptの引数がある時の処理
+if (isset($json_data['create_gpt']) && !empty($json_data['gpts'])) {
+    $class = new Gpt();
+    $data = $class->create_gpt($json_data['gpts']);
+}
+
+//create_talkの引数がある時の処理
+if (isset($json_data['create_talk']) && !empty($json_data['talks'])) {
+    $class = new Debate();
+    $data = $class->create_talk($json_data['debate_id'],$json_data['judgement'],$json_data['talks']);
+}
+
+//create_debateの引数がある時の処理
+if (isset($json_data['create_debate']) && !empty($json_data['gpts']) && !empty($json_data['debate'])) {
+    $class1 = new Gpt();
+    $class2 = new Debate();
+    $data =
+        array(
+            'gpts_id' => $class1->create_gpt($json_data['gpts']),
+            'debate_id' => $class2->create_debate($json_data['debate'])
+        );
+}
+
+//get_gptlistの引数がある時の処理
+if (isset($_POST['get_gptlist']) == true) {
+    $class = new Gpt();
+    $data = $class->get_gptlist($_POST['id']);
+}
+
+//search_gptの引数がある時の処理
+if (isset($_POST['search_gpt']) == true) {
+    $class = new Gpt();
+    $data = $class->search_gpt($_POST['character']);
+}
+
+//get_minutesの引数がある時の処理
+if (isset($_POST['get_minutes']) == true) {
+    $class = new Debate();
+    $data = $class->get_minutes($_POST['user_id']);
+}
+
+//get_talklistの引数がある時の処理
+if (isset($_POST['get_talklist']) == true) {
+    $class = new Debate();
+    $data = $class->get_talklist($_POST['debate_id']);
+}
+
+//get_debate_infoの引数がある時の処理
+if (isset($_POST['get_debate_info']) == true) {
+    $class = new Debate();
+    $data = $class->get_debate_info($_POST['debate_id']);
 }
 
 
@@ -27,3 +84,27 @@ if (isset($_POST['create_user']) == true) {
 $json_array = json_encode($data);
 
 print $json_array;
+// const create_account = async () => {
+//     try {
+//       const response = await axios.post(
+//         'http://mp-class.chips.jp/matiawase/main.php',
+//         'https://mp-class.chips.jp/matiawase/main.php',
+//         {
+//           create_user: '',
+//           name: name,
+// @@ -27,15 +27,12 @@ function Card() {
+//           },
+//         }
+//       );
+//       // console.log(response.data)
+//       if(response.data.create_acount === true) {
+//         localStorage.setItem('user_id', response.data.user_information.user_id)
+//         // console.log(localStorage.getItem('user_id'))
+//         seterror(false)
+//         location.href = '/map'
+//       } else {
+//         seterror(true)
+//         // console.log(response.data)
+//       }
+//     } catch(error) {
+//       console.log(error)
