@@ -5,7 +5,23 @@ import Styles from '@/styles/Home/Home.module.scss'
 import React, { useState } from 'react';
 import axios from 'axios';
 
+interface Character {
+    gpt_id: number;
+    gpt_name: string;
+    gpt_character: string;
+    gpt_img: number;
+    position: string;
+    user_id: number;
+  }
+
 function Home() {
+
+    //user情報をいれる
+    const[chara1,setChara1] = useState<Character | undefined>(undefined);
+    const[chara2,setChara2] = useState<Character | undefined>(undefined);
+    const[chara3,setChara3] = useState<Character | undefined>(undefined);
+    const[chara4,setChara4] = useState<Character | undefined>(undefined);
+
     const [showError, setShowError] = useState(false);
 const [characterValues, setCharacterValues] = useState<string[]>(["", "", "", ""]);
 const handleCharacterInputChange = (index: number, newValue: string) => {
@@ -57,7 +73,45 @@ const handleRadioChange = (index: any, newValue:any) => {
         setTitle(newTitle);
         // console.log(newTitle);
       }
+
+
+
       const debateStart = async () => {
+
+        let chara1 = {
+            gpt_id:1,
+            user_id: 1,
+            gpt_name: inputValues[0],
+            gpt_img: currentIndexes[0],
+            gpt_character: characterValues[0],
+            position: radioValues[0],
+          };
+        let chara2 = {
+            gpt_id:1,
+            user_id: 1,
+            gpt_name: inputValues[1],
+            gpt_img: currentIndexes[1],
+            gpt_character: characterValues[1],
+            position: radioValues[1],
+          };
+    
+        let chara3={
+            gpt_id:1,
+            user_id: 1,
+            gpt_name: inputValues[2],
+            gpt_img: currentIndexes[2],
+            gpt_character: characterValues[2],
+            position: radioValues[2],
+          };
+    
+          let chara4 = {
+            gpt_id:1,
+            user_id: 1,
+            gpt_name: inputValues[3],
+            gpt_img: currentIndexes[3],
+            gpt_character: characterValues[3],
+            position: radioValues[3],
+          };
         const positiveCount = radioValues.filter(value => value === '肯定').length;
         const negativeCount = radioValues.filter(value => value === '否定').length;
       
@@ -72,7 +126,7 @@ const handleRadioChange = (index: any, newValue:any) => {
             "create_debate": "",
             "gpts": [
                 {
-                    "user_id": 1,
+                    "user_id": 3,
                     "gpt_name": inputValues[0],
                     "gpt_gender": selectValues[0],
                     "gpt_img": currentIndexes[0],
@@ -80,7 +134,7 @@ const handleRadioChange = (index: any, newValue:any) => {
                     "position": radioValues[0]
                 },
                 {
-                    "user_id": 1,
+                    "user_id": 3,
                     "gpt_name": inputValues[1],
                     "gpt_gender": selectValues[1],
                     "gpt_img": currentIndexes[1],
@@ -88,7 +142,7 @@ const handleRadioChange = (index: any, newValue:any) => {
                     "position": radioValues[1]
                 },
                 {
-                    "user_id": 1,
+                    "user_id": 3,
                     "gpt_name": inputValues[2],
                     "gpt_gender": selectValues[2],
                     "gpt_img": currentIndexes[2],
@@ -96,7 +150,7 @@ const handleRadioChange = (index: any, newValue:any) => {
                     "position": radioValues[2]
                 },
                 {
-                    "user_id": 1,
+                    "user_id": 3,
                     "gpt_name": inputValues[3],
                     "gpt_gender":  selectValues[3],
                     "gpt_img": currentIndexes[3],
@@ -105,7 +159,7 @@ const handleRadioChange = (index: any, newValue:any) => {
                 }
             ],
             "debate":{
-                "id":1,
+                "id":3,
                 "title": title
             }
         };
@@ -120,9 +174,20 @@ const handleRadioChange = (index: any, newValue:any) => {
                 }
             );
             console.log(res);
+            //window.location.href="/debate1";
+
         } catch(error) {
             console.log(error);
         }
+
+              // セッションストレージにデータを保存する
+                localStorage.setItem("chara1", JSON.stringify(chara1));
+                localStorage.setItem("chara2", JSON.stringify(chara2));
+                localStorage.setItem("chara3", JSON.stringify(chara3));
+                localStorage.setItem("chara4", JSON.stringify(chara4));
+                let chara1data = JSON.parse(localStorage.getItem("chara1"));
+                console.log(chara1data);
+        
     };
 
     const start = () => {
@@ -134,7 +199,7 @@ const handleRadioChange = (index: any, newValue:any) => {
         // console.log(currentIndexes);
     }
     const location = () => {
-        
+        window.location.href="/record";
     }
 return (
 <>

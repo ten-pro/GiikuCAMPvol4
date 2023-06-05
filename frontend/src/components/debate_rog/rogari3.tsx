@@ -11,7 +11,7 @@ const Rogari3 :React.FC<LogProps>= ({log3}) =>{
       <div className={style.fukidasi_area}>
       <p className={style.p3}>{log3}</p>
       </div>
-      <img src="../../../public/image/gpt.png" alt="" className={style.img3}/>
+      <img src='/HomeImage/gptLogo2.png' alt="" className={style.img3}/>
     </div>
   )
 }

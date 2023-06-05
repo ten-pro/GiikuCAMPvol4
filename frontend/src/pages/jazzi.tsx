@@ -38,8 +38,8 @@ const Jazzi = () =>{
     try{
     axios
       .post('https://mp-class.chips.jp/debate/Main.php', {
-        get_debate_info: 1,
-          debate_id:2,
+        get_debate_info: '',
+          debate_id:31,
       }, {
         headers: {
           'Content-Type': 'multipart/form-data',

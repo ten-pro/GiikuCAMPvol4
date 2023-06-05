@@ -27,10 +27,42 @@ const Result = () =>{
   const[debate_id,setDebate_id] = useState<number>(0);
   const [title,setTitle] = useState<string>('');
 
-  const[chara1,setChara1] = useState<Character | undefined>(undefined);
-  const[chara2,setChara2] = useState<Character | undefined>(undefined);
-  const[chara3,setChara3] = useState<Character | undefined>(undefined);
-  const[chara4,setChara4] = useState<Character | undefined>(undefined);
+  // const[chara1,setChara1] = useState<Character | undefined>(undefined);
+  // const[chara2,setChara2] = useState<Character | undefined>(undefined);
+  // const[chara3,setChara3] = useState<Character | undefined>(undefined);
+  // const[chara4,setChara4] = useState<Character | undefined>(undefined);
+  const [chara1, setChara1] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "楓",
+    gpt_character: "やんちゃ",
+    gpt_img: 1,
+    position: "肯定",
+    user_id: 1
+  });
+  const [chara2, setChara2] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "増田",
+    gpt_character: "穏やか",
+    gpt_img: 1,
+    position: "肯定",
+    user_id: 1
+  });
+  const [chara3, setChara3] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "加藤",
+    gpt_character: "ミステリアス",
+    gpt_img: 1,
+    position: "否定",
+    user_id: 1
+  });
+  const [chara4, setChara4] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "川田",
+    gpt_character: "短気",
+    gpt_img: 1,
+    position: "否定",
+    user_id: 1
+  });
   const[seikaku,setSeikaku] = useState<string>('');
 
    //linkを使用してデータを取得
@@ -51,8 +83,8 @@ const Result = () =>{
     try{
     axios
       .post('https://mp-class.chips.jp/debate/Main.php', {
-        get_debate_info: 1,
-          debate_id:2,
+        get_debate_info: '',
+          debate_id:31,
       }, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -184,10 +216,10 @@ const Result = () =>{
       <User2 chara3={chara3}/>
       <User3 chara2={chara2}/>
       <User4 chara4={chara4}/>
-      {hantei.includes("肯定") && (
+      {Hantei.includes("肯定") && (
           <img src="../../../image/win.png" alt="" className={style.winkoutei}/>
       )}
-      {hantei.includes("否定") && (
+      {Hantei.includes("否定") && (
         <img src="../../../image/win.png" alt="" className={style.winhitei}/>
       )}
       <div className={style.hyouzi_area}>

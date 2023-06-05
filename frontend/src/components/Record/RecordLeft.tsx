@@ -9,11 +9,14 @@ interface homeProps {
     positions: string[];
 }
 function RecordLeft({ title, names, positions }:homeProps) {
+    const handle = () =>{
+        window.location.href = "/home";
+    }
 return (
 <>
     <div className={Styles.left}>
         <div className={Styles.buttonLine}>
-            <button className={Styles.homeButton}>く&nbsp;ホーム画面</button>
+            <button className={Styles.homeButton} onClick={handle}>く&nbsp;ホーム画面</button>
         </div>
         <div className={Styles.leftBottom}>
             <div className={Styles.leftBottomm}>

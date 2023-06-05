@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 
 const Tozirubtn = () =>{
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handle = () =>{
-    router.push('/debate1');
-  }
+  // const handle = () =>{
+  //   router.push('/debate1');
+  // }
 
   return(
-    <div className={style.close_btn} onClick={handle}></div>
+    <div className={style.close_btn} ></div>
   )
 }
 export default Tozirubtn;

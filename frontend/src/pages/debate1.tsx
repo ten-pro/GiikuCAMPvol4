@@ -9,11 +9,18 @@ import Rog1 from "@/components/debate/log1";
 import Rog3 from "@/components/debate/log3";
 import Rog2 from "@/components/debate/log2";
 import Rog4 from "@/components/debate/log4";
+import Rogari1 from "@/components/debate_rog/rogari1";
+import Rogari2 from "@/components/debate_rog/rogari2";
+import Rogari3 from "@/components/debate_rog/rogari3";
+import Rogari4 from "@/components/debate_rog/rogari4";
+import Tozirubtn from "@/components/debate_rog/tozirubtn";
 import Finishbtn from "@/components/debate_finish/finishbtn";
 import { useState,useEffect,useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
+
+import {useContext} from 'react';
 
 interface Character {
   gpt_id: number;
@@ -38,13 +45,45 @@ interface RogbtnProps {
 const Debate = () =>{
 
   const[debate_id,setDebate_id] = useState<number>(0);
-  const [title,setTitle] = useState<string>('');
+  const [title,setTitle] = useState<string>('今後世の中はAIに支配されるか');
 
-  const[chara1,setChara1] = useState<Character | undefined>(undefined);
-  const[chara2,setChara2] = useState<Character | undefined>(undefined);
-  const[chara3,setChara3] = useState<Character | undefined>(undefined);
-  const[chara4,setChara4] = useState<Character | undefined>(undefined);
-  const[seikaku,setSeikaku] = useState<string>('');
+  // const[chara1,setChara1] = useState<Character | undefined>(undefined);
+  // const[chara2,setChara2] = useState<Character | undefined>(undefined);
+  // const[chara3,setChara3] = useState<Character | undefined>(undefined);
+  // const[chara4,setChara4] = useState<Character | undefined>(undefined);
+  // const[seikaku,setSeikaku] = useState<string>('');
+  const [chara1, setChara1] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "楓",
+    gpt_character: "やんちゃ",
+    gpt_img: 1,
+    position: "肯定",
+    user_id: 1
+  });
+  const [chara2, setChara2] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "増田",
+    gpt_character: "穏やか",
+    gpt_img: 1,
+    position: "肯定",
+    user_id: 1
+  });
+  const [chara3, setChara3] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "加藤",
+    gpt_character: "ミステリアス",
+    gpt_img: 1,
+    position: "否定",
+    user_id: 1
+  });
+  const [chara4, setChara4] = useState<Character | undefined>({
+    gpt_id: 1,
+    gpt_name: "川田",
+    gpt_character: "短気",
+    gpt_img: 1,
+    position: "否定",
+    user_id: 1
+  });
 
   const [kou1,setKou1] = useState<string>(''); //１肯定の発表
   const [hi2,setHi2] = useState<string>(''); //２否定の反対尋問
@@ -66,50 +105,47 @@ const Debate = () =>{
   const [isRog8Visible, setIsRog8Visible] = useState<boolean>(false);
   const [finishbtn,setFinishbtn] = useState<boolean>(false);
 
-  //user情報取得
-  useEffect(() => {
-    try{
-    axios
-      .post('https://mp-class.chips.jp/debate/Main.php', {
-        get_debate_info: 1,
-          debate_id:2,
-      }, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        }
-      })
-      .then(function (response) {
-        if (response.data === false) {
-          // userData.error1 = true;
-        } else {
-          console.log(response.data);
-          const data = response.data[0];
-          setDebate_id(data.debate_id); 
-          setTitle(data.title);          
-          const gpts = data.gpts;
-          setSeikaku(gpts.gpt_character);
-        
-        const positiveGpts = gpts.filter((gpt: Character) => gpt.position === "肯定");
-        const negativeGpts = gpts.filter((gpt: Character) => gpt.position === "否定");
-        
-        if (positiveGpts.length >= 1) {
-          setChara1(positiveGpts[0]);
-        }
-        if (positiveGpts.length >= 2) {
-          setChara2(positiveGpts[1]);
-        }
-        if (negativeGpts.length >= 1) {
-          setChara3(negativeGpts[0]);
-        }
-        if (negativeGpts.length >= 2) {
-          setChara4(negativeGpts[1]);
-        }
-        }
-      })
-    }catch(e){
-      console.log(e);
-    }
-  }, [])
+  //ｇｐｔの画像取得
+  const[gptimg,setGptimg] = useState<number>();
+  const [images, setImages] = useState([
+    '/HomeImage/gptLogo1.png',
+    '/HomeImage/gptLogo2.png',
+    '/HomeImage/gptLogo3.png',
+    '/HomeImage/gptLogo4.png',
+    '/icon/logo0.png',
+    '/icon/logo1.png',
+    '/icon/logo2.png',
+    '/icon/logo3.png',
+    '/icon/logo4.png',
+    '/icon/logo5.png',
+    '/icon/logo6.png',
+    '/icon/logo7.png',
+    '/icon/logo8.png',
+    '/icon/logo9.png',
+    '/icon/logo10.png',
+    '/icon/logo11.png',
+    '/icon/logo12.png',
+    '/icon/logo13.png',
+    '/icon/logo14.png',
+    '/icon/logo15.png',
+    '/icon/logo16.png',
+    '/icon/logo17.png',
+    '/icon/logo18.png',
+    '/icon/logo19.png',
+    '/icon/logo20.png',
+    '/icon/logo21.png',
+    '/icon/logo22.png',
+    '/icon/logo23.png',
+    '/icon/logo24.png',
+    '/icon/logo25.png',
+    // Other image paths...
+]);
+
+ //let chara1data = JSON.parse(localStorage.getItem("chara1"));
+//  let chara2data = JSON.parse(localStorage.getItem("chara2"));
+//  let chara3data = JSON.parse(localStorage.getItem("chara3"));
+//  let chara4data = JSON.parse(localStorage.getItem("chara4"));
+
 
       // ↓GPTの動き１回目の発表
       const fetchMessage1 = async () => {
@@ -124,8 +160,8 @@ const Debate = () =>{
           const body = {
             "model": "gpt-3.5-turbo",
             "messages": [
-              { "role": "system", "content": `あなたの名前はあい。やんちゃ坊主な性格で答えてほしい` },
-              { "role": "user", "content": `肯定の立場で朝のコーヒーについて簡潔に３文で立論してほしい`}
+              { "role": "system", "content": `あなたの名前は${chara1?.gpt_name}。${chara1?.gpt_character}な性格で答えてほしい` },
+              { "role": "user", "content": `肯定の立場で${title}について簡潔に３文で立論してほしい`}
             ],
             "max_tokens": 130  // 返答の最大トークン数を指定
           };
@@ -158,9 +194,9 @@ const Debate = () =>{
         const body = {
           "model": "gpt-3.5-turbo",
           "messages": [
-            { "role": "system", "content": `あなたはもみじ。真面目な性格で答えてほしい` },
+            { "role": "system", "content": `あなたは${chara3?.gpt_name}。${chara3?.gpt_character}で答えてほしい` },
             { "role": "assistant", "content": kou1 },
-            { "role": "user", "content": `反対の立場で３文で簡潔に反論をしてほしい` },
+            { "role": "user", "content": `反対の立場で${title}についてassistantを含めて３文で簡潔に反論をしてほしい` },
           ],
           "max_tokens": 130
         };
@@ -192,14 +228,13 @@ const Debate = () =>{
             const body = {
               "model": "gpt-3.5-turbo",
               "messages": [
-                { "role": "system", "content": `あなたの名前はかい。ヤンキーな性格で答えてほしい` },
-                { "role": "user", "content": `否定の立場で朝のコーヒーについて３文で簡潔に立論してほしい`}
+                { "role": "system", "content": `あなたの名前は${chara4?.gpt_name}。${chara4?.gpt_character}な性格で答えてほしい` },
+                { "role": "user", "content": `否定の立場で${title}について３文で簡潔に立論してほしい`}
               ],
                 "max_tokens": 130  // 返答の最大トークン数を指定
             };
       
             const response = await axios.post('https://api.openai.com/v1/chat/completions', body, configuration);
-            //setMessage(response.data.choices[0].message.content);
           console.log(response.data.choices[0].message.content);
             setHi3(response.data.choices[0].message.content);
             setIsRog2Visible(false);
@@ -226,15 +261,14 @@ const Debate = () =>{
         const body = {
           "model": "gpt-3.5-turbo",
           "messages": [
-            { "role": "system", "content": `あなたの名前はまい。オタク気質な性格で答えてほしい` },
+            { "role": "system", "content": `あなたの名前は${chara2?.gpt_name}。${chara2?.gpt_character}な性格で答えてほしい` },
             { "role": "assistant", "content": hi3 },
-            { "role": "user", "content": `肯定の立場で３文で反論をしてほしい` },
+            { "role": "user", "content": `肯定の立場で${title}についてassistantを含めて３文で反論をしてほしい` },
           ],
           "max_tokens": 130  // 返答の最大トークン数を指定
         };
   
         const response = await axios.post('https://api.openai.com/v1/chat/completions', body, configuration);
-        //setMessage(response.data.choices[0].message.content);
         console.log(response.data.choices[0].message.content);
         setKou4(response.data.choices[0].message.content);
         setIsRog3Visible(false);
@@ -262,16 +296,15 @@ const Debate = () =>{
             const body = {
               "model": "gpt-3.5-turbo",
               "messages": [
-                { "role": "system", "content": `あなたの名前はあい。やんちゃ坊主な性格で答えてほしい` },
+                { "role": "system", "content": `あなたの名前は${chara1?.gpt_name}。${chara1?.gpt_character}な性格で答えてほしい` },
                 { "role": "assistant", "content": hi2 },
-                { "role": "user", "content": `肯定の立場で３文で反駁をしてほしい` },
+                { "role": "user", "content": `肯定の立場で${title}についてassistantを含めて３文で反駁をしてほしい` },
               ],
           "max_tokens": 130  // 返答の最大トークン数を指定
 
             };
       
             const response = await axios.post('https://api.openai.com/v1/chat/completions', body, configuration);
-            //setMessage(response.data.choices[0].message.content);
             setKou5(response.data.choices[0].message.content);
             setIsRog4Visible(false);
             setIsRog5Visible(true);
@@ -298,16 +331,14 @@ const Debate = () =>{
         const body = {
           "model": "gpt-3.5-turbo",
           "messages": [
-            // { "role": "system", "content": `あなたの性格は${chara3?.gpt_character}。` },
-            { "role": "system", "content": `あなたの名前はかい。ヤンキーな性格で答えてほしい` },
+            { "role": "system", "content": `あなたの名前は${chara3?.gpt_name}。${chara3?.gpt_character}な性格で答えてほしい` },
             { "role": "assistant", "content": kou4 },
-            { "role": "user", "content": `反対の立場で３文で反対をしてほしい` },
+            { "role": "user", "content": `反対の立場で${title}についてassistantを含めて３文で反対をしてほしい` },
           ],
           "max_tokens": 130  // 返答の最大トークン数を指定
         };
   
         const response = await axios.post('https://api.openai.com/v1/chat/completions', body, configuration);
-        //setMessage(response.data.choices[0].message.content);
         setHi6(response.data.choices[0].message.content);
         setIsRog5Visible(false);
         setIsRog6Visible(true);
@@ -335,17 +366,15 @@ const Debate = () =>{
         const body = {
           "model": "gpt-3.5-turbo",
           "messages": [
-            // { "role": "system", "content": `あなたの性格は${chara3?.gpt_character}。` },
-            { "role": "system", "content": `あなたの名前はかい。ヤンキーな性格で答えてほしい` },
+            { "role": "system", "content": `あなたの名前は${chara2?.gpt_name}。${chara2?.gpt_character}な性格で答えてほしい` },
             { "role": "assistant", "content": kou1 },
             { "role": "assistant", "content": kou5 },
-            { "role": "user", "content": `肯定の立場で３文でまとめてほしい` },
+            { "role": "user", "content": `肯定の立場で${title}についてassistantを含めて３文でまとめてほしい` },
           ],
           "max_tokens": 130  // 返答の最大トークン数を指定
         };
   
         const response = await axios.post('https://api.openai.com/v1/chat/completions', body, configuration);
-        //setMessage(response.data.choices[0].message.content);
         setKou7(response.data.choices[0].message.content);
         setIsRog6Visible(false);
         setIsRog7Visible(true);
@@ -373,17 +402,15 @@ const Debate = () =>{
               const body = {
                 "model": "gpt-3.5-turbo",
                 "messages": [
-                  // { "role": "system", "content": `あなたの性格は${chara3?.gpt_character}。` },
-                  { "role": "system", "content": `あなたの名前はかい。オタク気質な性格で答えてほしい` },
+                  { "role": "system", "content": `あなたの名前は${chara4?.gpt_name}。${chara4?.gpt_character}な性格で答えてほしい` },
                   { "role": "assistant", "content": hi3},
                   { "role": "assistant", "content": hi6 },
-                  { "role": "user", "content": `反対の立場で３文でまとめてほしい` },
+                  { "role": "user", "content": `反対の立場で${title}についてassistantを含めて３文でまとめてほしい` },
                 ],
                 "max_tokens": 130  // 返答の最大トークン数を指定
               };
         
               const response = await axios.post('https://api.openai.com/v1/chat/completions', body, configuration);
-              //setMessage(response.data.choices[0].message.content);
               setHi8(response.data.choices[0].message.content);
               setIsRog7Visible(false);
               setIsRog8Visible(true);
@@ -398,15 +425,18 @@ const Debate = () =>{
             }
           };
 
-          const [loopstop,setLoopstop] = useState<boolean>(false);
+          const [loopstop, setLoopstop] = useState(false);
+          const [closebtn, setClosebtn] = useState(false);
 
           //gptへの関数を動かす
           useEffect(() => {
+            let cancel = false;
+          
             const fetchMessages = async () => {
               const messages = [
-                  fetchMessage1,
-                  fetchMessage2,
-                  fetchMessage3,
+                fetchMessage1,
+                fetchMessage2,
+                fetchMessage3,
                 fetchMessage4,
                 fetchMessage5,
                 fetchMessage6,
@@ -415,24 +445,37 @@ const Debate = () =>{
               ];
           
               for (let i = 0; i < 8; i++) {
-                if (loopstop) {
-                  break; // ループを中断
+                if (cancel) {
+                  break;
                 }
                 await messages[i]();
               }
-
-              setIsRog8Visible(false);
-              setFinishbtn(true);
-              
+          
+              if (!cancel) {
+                setIsRog8Visible(false);
+                setFinishbtn(true);
+                setClosebtn(true);
+                console.log(cancel);
+              }
             };
           
             fetchMessages();
+          
+            return () => {
+              cancel = true;
+            };
           }, [loopstop]);
 
-          const pushbtn = () => {
-            setLoopstop(true);
-          };
+          const [logari,setLogari] = useState<boolean>(false);
 
+          const logaribtn = ()=>{
+              setLogari(true);
+          }
+
+          const toziru = () =>{
+            setLogari(false);
+            setLoopstop(true);
+          }
 
 
   return (
@@ -455,29 +498,39 @@ const Debate = () =>{
     <User3 chara2={chara2}/>
     <User4 chara4={chara4}/>
     
-      <div>
+    <div>
+  {!logari && (
+    <>
       {isRog1Visible && <Rog1 log1={kou1} />}
-      {isRog2Visible &&<Rog3 log3={hi2} />}
-      {isRog3Visible &&<Rog4 log4={hi3} />}
-      {isRog4Visible &&<Rog2 log2={kou4} />}
+      {isRog2Visible && <Rog3 log3={hi2} />}
+      {isRog3Visible && <Rog4 log4={hi3} />}
+      {isRog4Visible && <Rog2 log2={kou4} />}
+      {isRog5Visible && <Rog1 log1={kou5} />}
+      {isRog6Visible && <Rog3 log3={hi6} />}
+      {isRog7Visible && <Rog2 log2={kou7} />}
+      {isRog8Visible && <Rog4 log4={hi8} />}
+    </>
+  )}
+</div>
+
+      <div onClick={logaribtn} className={style.push_area}>
+        <Rogbtn/>
+      </div>
+
+    {logari&&
+    <div className={style.hyouzi_area}>
+    {kou1&&<Rogari1 log1={kou1}/>}
+    {hi2&&<Rogari3 log3={hi2} />}
+    {hi3&&<Rogari4 log4={hi3} />}
+    {kou4&&<Rogari2 log2={kou4} />}
       
-      {isRog5Visible &&<Rog1 log1={kou5} />}
-      {isRog6Visible &&<Rog3 log3={hi6} />}
-      {isRog7Visible &&<Rog2 log2={kou7} />}
-      {isRog8Visible &&<Rog4 log4={hi8} />}
-
-    </div>
-
-    <div onClick={pushbtn} className={style.push_area}>
-    <Rogbtn log1={kou1}
-            log3={hi2}
-            log4={hi3}
-            log2={kou4}
-            log5={kou5}
-            log6={hi6}
-            log7={kou7}
-            log8={hi8}/>
-    </div>
+    {kou5&&<Rogari1 log1={kou5} />}
+    {hi6&&<Rogari3 log3={hi6} />}
+    {kou7&&<Rogari2 log2={kou7} />}
+    {hi8&&<Rogari4 log4={hi8} />}
+    
+    </div>}
+    <div onClick={toziru} className={style.tozi_area}>{logari&&<Tozirubtn/>}</div>
 
     {isRog1Visible && <p className={style.mozi}>立論</p>}
     {isRog2Visible && <p className={style.mozi}>反対尋問</p>}

@@ -9,7 +9,7 @@ const Rogari2: React.FC<LogProps> = ({ log2 }) => {
   return (
 
     <div className={style.rogari_area}>
-      <img src="../../../public/image/gpt.png" alt="" className={style.img2} />
+      <img src='/HomeImage/gptLogo2.png' alt="" className={style.img2} />
       <div className={style.fukidasi_area}>
         <p className={style.p1}>{log2}</p>
       </div>

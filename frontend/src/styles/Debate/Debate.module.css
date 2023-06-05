@@ -136,3 +136,26 @@
   justify-content: center;
   align-items: center;
 }
+
+.hyouzi_area{
+  display: grid;
+  grid-column: 2;
+  grid-row: 2 / span 3;
+  border-radius: 1.5vw;
+  border: 0.4vw solid #00FF38;
+  min-width: 120px;
+  max-width: 95%;
+  max-height: 80%;
+  margin-top: 2vw;
+  margin-left: 2vw;
+  overflow: auto; /* スクロールバーを表示する */
+  background-color: rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.tozi_area{
+  display: grid;
+  position: absolute;
+  top: 8vw;
+  left: 78vw;
+}
