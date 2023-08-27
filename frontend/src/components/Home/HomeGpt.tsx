@@ -10,19 +10,33 @@ interface HomeGptProps {
     placeholder: string;
     position: string;
     loading: string;
+
     positive: string;
+    human: string;
+
     negative: string;
+    ai:string;
+
     one:string;
     all: string;
+
     pCheck: boolean;
+    qCheck:boolean;
+    
     lCheck: boolean;
     onTitleChange: (newTitle: string) => void; 
     indexName: number;
     indexSelect:number;
+
     indexRadio: number;
+    indexRadio1: number;
+
     indexCharacter: number;
     onCharacterInputChange:(index: number, newValue: string) => void;
+
     onRadioChange: (index: number, newValue: string) => void;
+    onRadioChange1: (index: number, newValue: string) => void;
+
     onInputChange: (index: number, newValue: string) => void;
     onSelectChange: (index: number, newValue: string) => void;
   }
@@ -33,7 +47,7 @@ const Checkbox = ({ children, ...props }: JSX.IntrinsicElements['input']) => (
       {children}
     </label>
   );
-function HomeGpt({ onImageChange, onCharacterInputChange,indexCharacter,onRadioChange,indexRadio, indexSelect,onSelectChange,indexName, onInputChange, color, src, placeholder, position, loading , positive, negative, one, all, pCheck ,lCheck}: HomeGptProps) {
+function HomeGpt({ onImageChange, onCharacterInputChange,indexCharacter,onRadioChange,onRadioChange1, indexRadio,indexRadio1, indexSelect,onSelectChange,indexName, onInputChange, color, src, placeholder, position, loading , positive,human, negative,ai,  one, all, pCheck ,qCheck, lCheck}: HomeGptProps) {
     const style = {
         boxShadow: `
         0 0 10px ${color},
@@ -70,7 +84,10 @@ function HomeGpt({ onImageChange, onCharacterInputChange,indexCharacter,onRadioC
       const [isClearable, setIsClearable] = useState(true);
       const [userId, setUserId] = useState<number | null>(null);
 const [isSearchable, setIsSearchable] = useState(true);
+
       const [cPosition, setCPosition] = useState(pCheck ? positive : negative);
+      const [dPosition, setDPosition] = useState(qCheck ? human : ai);
+
       const [cLoading, setCLoading] = useState(lCheck ? one : all);
       const [isMounted, setIsMounted] = useState(false);
       const [id, setId] = useState(0); 
@@ -165,6 +182,13 @@ return (
                     <label htmlFor={positive} className={Styles.positiveLabel} >肯定</label>
                     <input type="radio" name={`group${indexRadio}`} value='否定' id={negative} className={Styles.positionRadio2} checked={cPosition === negative} onChange={(e) => { setCPosition(negative); onRadioChange(indexRadio, e.target.value); }}/>
                     <label htmlFor={negative} className={Styles.negativeLabel} >否定</label>
+                </div>
+                <div className={Styles.position}>
+                    <div className={Styles.positionTitle}>player：</div>
+                    <input name={`group1${indexRadio1}`} onChange={(e) => { setDPosition(human); onRadioChange1(indexRadio1, e.target.value); }} type="radio" value='human' id={human} className={Styles.positionRadio1} checked={dPosition === human}/>
+                    <label htmlFor={human} className={Styles.positiveLabel} >human</label>
+                    <input type="radio" name={`group1${indexRadio1}`} value='ai' id={ai} className={Styles.positionRadio2} checked={dPosition === ai} onChange={(e) => { setDPosition(ai); onRadioChange1(indexRadio1, e.target.value); }}/>
+                    <label htmlFor={ai} className={Styles.negativeLabel} >ai</label>
                 </div>
                 <div className={Styles.character}>
                     <div className={Styles.characterTitle}>性格：</div>
