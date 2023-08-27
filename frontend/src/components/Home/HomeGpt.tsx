@@ -184,11 +184,11 @@ return (
                     <label htmlFor={negative} className={Styles.negativeLabel} >否定</label>
                 </div>
                 <div className={Styles.position}>
-                    <div className={Styles.positionTitle}>player：</div>
-                    <input name={`group1${indexRadio1}`} onChange={(e) => { setDPosition(human); onRadioChange1(indexRadio1, e.target.value); }} type="radio" value='human' id={human} className={Styles.positionRadio1} checked={dPosition === human}/>
-                    <label htmlFor={human} className={Styles.positiveLabel} >human</label>
-                    <input type="radio" name={`group1${indexRadio1}`} value='ai' id={ai} className={Styles.positionRadio2} checked={dPosition === ai} onChange={(e) => { setDPosition(ai); onRadioChange1(indexRadio1, e.target.value); }}/>
-                    <label htmlFor={ai} className={Styles.negativeLabel} >ai</label>
+                    <div className={Styles.positionTitle}>プレイヤー:</div>
+                    <input name={`group1${indexRadio1}`} onChange={(e) => { setDPosition(human); onRadioChange1(indexRadio1, e.target.value); }} type="radio" value='人間' id={human} className={Styles.positionRadio1} checked={dPosition === human}/>
+                    <label htmlFor={human} className={Styles.positiveLabel} >人間</label>
+                    <input type="radio" name={`group1${indexRadio1}`} value='AI' id={ai} className={Styles.positionRadio2} checked={dPosition === ai} onChange={(e) => { setDPosition(ai); onRadioChange1(indexRadio1, e.target.value); }}/>
+                    <label htmlFor={ai} className={Styles.negativeLabel} >AI</label>
                 </div>
                 <div className={Styles.character}>
                     <div className={Styles.characterTitle}>性格：</div>

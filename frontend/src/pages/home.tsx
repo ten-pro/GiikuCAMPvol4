@@ -63,7 +63,7 @@ const handleRadioChange = (index: any, newValue:any) => {
     setRadioValues(newRadioValues);
 }
 
-const [radioValues1, setRadioValues1] = useState<string[]>(["human", "ai", "human", "ai"]);
+const [radioValues1, setRadioValues1] = useState<string[]>(["AI", "AI", "AI", "AI"]);
 const handleRadioChange1 = (index: any, newValue:any) => {
     const newRadioValues = [...radioValues1];
     newRadioValues[index] = newValue;
@@ -91,11 +91,16 @@ const handleRadioChange1 = (index: any, newValue:any) => {
       const debateStart = async () => {
         const positiveCount = radioValues.filter(value => value === '肯定').length;
         const negativeCount = radioValues.filter(value => value === '否定').length;
-      
+        const humanCount = radioValues1.filter(value => value === '人間').length;
+        const aiCount = radioValues1.filter(value => value === 'AI').length;
         if (positiveCount !== 2 || negativeCount !== 2) {
           // If the radio values are not balanced, show an alert
           window.alert("肯定と否定を2：2にしてください");
           return;
+        }
+        if(humanCount > 1) {
+            window.alert('人間は1つ以下にしてください');
+            return;
         }
   
       setShowError(false); 
@@ -108,7 +113,8 @@ const handleRadioChange1 = (index: any, newValue:any) => {
                     "gpt_gender": selectValues[0],
                     "gpt_img": currentIndexes[0],
                     "gpt_character": characterValues[0],
-                    "position": radioValues[0]
+                    "position": radioValues[0],
+                    "player":"AI"
                 },
                 {
                     "user_id": 1,
@@ -116,7 +122,8 @@ const handleRadioChange1 = (index: any, newValue:any) => {
                     "gpt_gender": selectValues[1],
                     "gpt_img": currentIndexes[1],
                     "gpt_character": characterValues[1],
-                    "position": radioValues[1]
+                    "position": radioValues[1],
+                    "player":"人間"
                 },
                 {
                     "user_id": 1,
@@ -124,7 +131,8 @@ const handleRadioChange1 = (index: any, newValue:any) => {
                     "gpt_gender": selectValues[2],
                     "gpt_img": currentIndexes[2],
                     "gpt_character": characterValues[2],
-                    "position": radioValues[2]
+                    "position": radioValues[2],
+                    "player":"AI"
                 },
                 {
                     "user_id": 1,
@@ -132,7 +140,8 @@ const handleRadioChange1 = (index: any, newValue:any) => {
                     "gpt_gender":  selectValues[3],
                     "gpt_img": currentIndexes[3],
                     "gpt_character": characterValues[3],
-                    "position": radioValues[3]
+                    "position": radioValues[3],
+                    "player":"AI"
                 }
             ],
             "debate":{
@@ -172,17 +181,17 @@ return (
 <>
     <HomeTitle onTitleChange={handleTitleChange}/>
     <div style={{display: "flex"}}>
-        <HomeGpt src={images[currentIndexes[0]]} onImageChange={handleImageChange(0)}  indexCharacter={0}onCharacterInputChange={handleCharacterInputChange} indexRadio={0} indexRadio1={0} onRadioChange={handleRadioChange} onRadioChange1={handleRadioChange1} indexSelect={0} onSelectChange={handleSelectChange} indexName={0} onInputChange={handleInputChange} color="#ff0000" lCheck={false} pCheck={true} qCheck={true} placeholder='Ada' position='1' loading='11' positive='111' human='1111' negative='a' ai='e' one='aa' all='aaa'/>
+        <HomeGpt src={images[currentIndexes[0]]} onImageChange={handleImageChange(0)}  indexCharacter={0}onCharacterInputChange={handleCharacterInputChange} indexRadio={0} indexRadio1={0} onRadioChange={handleRadioChange} onRadioChange1={handleRadioChange1} indexSelect={0} onSelectChange={handleSelectChange} indexName={0} onInputChange={handleInputChange} color="#ff0000" lCheck={false} pCheck={true} qCheck={false} placeholder='Ada' position='1' loading='11' positive='111' human='1111' negative='a' ai='e' one='aa' all='aaa'/>
         <HomeGpt src={images[currentIndexes[1]]} onImageChange={handleImageChange(1)}  indexCharacter={1}onCharacterInputChange={handleCharacterInputChange} indexRadio={1} indexRadio1={1} onRadioChange={handleRadioChange} onRadioChange1={handleRadioChange1} indexSelect={1} onSelectChange={handleSelectChange} indexName={1} onInputChange={handleInputChange} color="#CC00FF" lCheck={true} pCheck={false} qCheck={false} placeholder='Babbage' position='2' loading='22' positive='222' human='2222' negative='b'ai='f'  one='bb' all='bbb'/>
     </div>
     <div style={{display: "flex"}}>
         <div style={{display: "flex"}}>
-            <HomeGpt src={images[currentIndexes[2]]} onImageChange={handleImageChange(2)}  indexCharacter={2}onCharacterInputChange={handleCharacterInputChange} indexRadio={2} indexRadio1={2} onRadioChange={handleRadioChange} onRadioChange1={handleRadioChange1} indexSelect={2} onSelectChange={handleSelectChange} indexName={2} onInputChange={handleInputChange} color="#33E9E9" lCheck={false} pCheck={true} qCheck={true} placeholder='Curie' position='3' loading='33' positive='333' human='3333' negative='c' ai='g' one='cc' all='ccc'/>
+            <HomeGpt src={images[currentIndexes[2]]} onImageChange={handleImageChange(2)}  indexCharacter={2}onCharacterInputChange={handleCharacterInputChange} indexRadio={2} indexRadio1={2} onRadioChange={handleRadioChange} onRadioChange1={handleRadioChange1} indexSelect={2} onSelectChange={handleSelectChange} indexName={2} onInputChange={handleInputChange} color="#33E9E9" lCheck={false} pCheck={true} qCheck={false} placeholder='Curie' position='3' loading='33' positive='333' human='3333' negative='c' ai='g' one='cc' all='ccc'/>
             <HomeGpt src={images[currentIndexes[3]]} onImageChange={handleImageChange(3)}  indexCharacter={3}onCharacterInputChange={handleCharacterInputChange} indexRadio={3} indexRadio1={3} onRadioChange={handleRadioChange} onRadioChange1={handleRadioChange1} indexSelect={3} onSelectChange={handleSelectChange} indexName={3} onInputChange={handleInputChange} color="#FFD56A" lCheck={true} pCheck={false} qCheck={false} placeholder='Davinci' position='4' loading='44' positive='444' human='4444' negative='d' ai='h' one='dd' all='ddd'/>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }} className={Styles.buttonArea}>
             <HomeButton text="議事録を開く" functionButton={location}/>
-            <HomeButton text="スタート" functionButton={start}/>
+            <HomeButton text="スタート" functionButton={debateStart}/>
         </div>
     </div>
 </>
